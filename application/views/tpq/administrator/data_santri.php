@@ -2,6 +2,7 @@
     <div class="content-wrapper">
 
         <div class="page-header">
+            <a target="blank" href="<?= site_url("main/register") ?>" class="btn btn-info">Tambah siswa</a>
             <h3 class="page-title"> Data Santri </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">

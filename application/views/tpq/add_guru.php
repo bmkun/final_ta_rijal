@@ -33,23 +33,46 @@
               </div>
               
               <h6 class="font-weight-light">Sign in to continue.</h6> -->
-                            <h3 class="text-center">Daftar akun</h3>
-                            <form class="pt-3" action="<?= site_url("main/action_register") ?>" method="POST">
+                            <h3 class="text-center">Formulir Pendaftaran Calon Santri</h3>
+                            <form class="pt-3" action="<?= site_url("auth/login") ?>" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="username">
+                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="email">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Nama santri" name="Nama santri">
                                 </div>
+                                <div class="form-group">
+                                    <select name="Gender" id="" class="form-control form-control-lg">
+                                        <option value="L">Laki - Laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Nama ayah" name="Nama ayah">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Nama ibu" name="Nama ibu">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Nmr Telfon" name="Nmr Telfon">
 
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Pendidikan Formal" name="Pendidikan Formal">
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Pekerjaan ayah" name="Pekerjaan ayah">
+
+                                </div>
 
                                 <div class="mt-3">
                                     <!-- <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
                  -->
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrasi</button>
+                                    <button type="Daftar" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Registrasi</button>
                                 </div>
                                 <!-- <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">

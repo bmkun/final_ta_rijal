@@ -64,15 +64,15 @@
                  <ul class="nav">
                      <li class="nav-item nav-category">Main</li>
                      <li class="nav-item">
-                         <a class="nav-link" href="index.html">
+                         <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
                              <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                             <span class="menu-title">Input nilai ummi</span>
+                             <span class="menu-title">Biodata siswa</span>
                          </a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="index.html">
                              <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                             <span class="menu-title">Input nilai diniah</span>
+                             <span class="menu-title">Nilai Siswa</span>
                          </a>
                      </li>
 

@@ -2,6 +2,7 @@
     <div class="content-wrapper">
 
         <div class="page-header">
+            <a target="blank" href="<?= site_url("main/register_guru") ?>" class="btn btn-info">Tambah Guru</a>
             <h3 class="page-title"> Data Guru </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
