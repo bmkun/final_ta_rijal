@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pendaftaran Santri</title>
+    <title>Connect Plus</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -31,10 +31,9 @@
                             <!-- <div class="brand-logo">
                 <img src="../../assets/images/logo-dark.svg">
               </div>
-              
               <h6 class="font-weight-light">Sign in to continue.</h6> -->
-                            <h3 class="text-center">Daftar akun Walimurid</h3>
-                            <form class="pt-3" action="<?= site_url("main/action_register") ?>" method="POST">
+                            <h3 class="text-center">Daftar akun Guru</h3>
+                            <form class="pt-3" action="<?= site_url("main/action_register_guru") ?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="username">
                                 </div>
@@ -44,8 +43,6 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" name="password">
                                 </div>
-
-
                                 <div class="mt-3">
                                     <!-- <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN IN</a>
                  -->

@@ -13,10 +13,10 @@ class Walimurid_access extends CI_Controller
     function biodata_santri()
     {
 
-
-        $data['sidebar_role'] = "guru";
-        $data['tittle'] = "input nilai";
+        $data['sidebar_role'] = "wali";
+        $data['tittle'] = "Biodata santri";
         $data['status_biodata'] = $this->m_walimurid->biodata_check();
+        $data['show_biodata'] = $this->m_walimurid->biodata_show();
         $this->load->view("tpq/header", $data);
         $this->load->view("tpq/sidebar_role", $data);
         $this->load->view("tpq/walimurid/biodata_santri", $data);

@@ -54,6 +54,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 // $route['paket-trip/detail/(:any)'] = 'main/detail_paket/$1';
 // $route['paket-trip'] = 'main';
 
+$route['registrasi'] = 'main/register';
+$route['reg_guru'] = 'main/register_guru';
+$route['login'] = 'auth/login';
+
 
 $route['default_controller'] = 'auth';
 $route['404_override'] = '';

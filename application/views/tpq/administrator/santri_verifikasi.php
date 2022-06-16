@@ -2,8 +2,8 @@
     <div class="content-wrapper">
 
         <div class="page-header">
-            <a target="blank" href="<?= site_url("main/register") ?>" class="btn btn-info">Tambah siswa</a>
-            <h3 class="page-title"> Data Santri </h3>
+            <!-- <a target="blank" href="<?= site_url("main/register") ?>" class="btn btn-info">Tambah siswa</a> -->
+            <h3 class="page-title"> Verifikasi Data Santri </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
@@ -27,6 +27,7 @@
                                 <th> Nama Ayah</th>
                                 <th> Nama Ibu</th>
                                 <th>Nomor Hp</th>
+                                <th> Verification </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +43,7 @@
                                     <td> <?= $all_santri['Nama_ayah'] ?></td>
                                     <td> <?= $all_santri['Nama_ibu'] ?></td>
                                     <td> <?= $all_santri['No_hp'] ?></td>
+                                    <td><a href="<?= site_url("administrators/action_ver_santri/" . $all_santri['id']) ?>" class="btn btn-info">Verfikasi</a></td>
 
 
                                 </tr>

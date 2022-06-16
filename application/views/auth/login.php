@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Connect Plus</title>
+  <title>Loggin page</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>assets/assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -35,7 +35,7 @@
               <h6 class="font-weight-light">Sign in to continue.</h6> -->
               <form class="pt-3" action="<?= site_url("auth/login") ?>" method="POST">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="identity" name="identity">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="username" name="identity">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="password" name="password">
@@ -56,7 +56,7 @@
                   <button type="button" class="btn btn-block btn-facebook auth-form-btn">
                     <i class="mdi mdi-facebook mr-2"></i>Connect using facebook </button>
                 </div> -->
-                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="<?= site_url('main/register') ?>" class="text-primary">Create</a>
+                <div class="text-center mt-4 font-weight-light"> Belum memiliki akun? <a href="<?= site_url('main/register') ?>" class="text-primary">Buat akun</a>
                 </div>
               </form>
             </div>

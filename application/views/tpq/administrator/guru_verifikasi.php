@@ -2,8 +2,8 @@
     <div class="content-wrapper">
 
         <div class="page-header">
-            <a target="blank" href="<?= site_url("main/register") ?>" class="btn btn-info">Tambah siswa</a>
-            <h3 class="page-title"> Data Santri </h3>
+            <!-- <a target="blank" href="<?= site_url("main/register") ?>" class="btn btn-info">Tambah siswa</a> -->
+            <h3 class="page-title"> Verifikasi Data Santri </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
@@ -24,24 +24,23 @@
                                 <th> Nama</th>
                                 <th> Tanggal Lahir </th>
                                 <th> Jenis Kelamin </th>
-                                <th> Nama Ayah</th>
-                                <th> Nama Ibu</th>
-                                <th>Nomor Hp</th>
+                                <th> No Hp </th>
+                                <th> Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
 
-                            <?php foreach ($data_santri as $all_santri) { ?>
+                            <?php foreach ($data_guru as $all_guru) { ?>
                                 <tr>
 
-                                    <td> <?= $all_santri['Nama'] ?></td>
-                                    <td> <?= $all_santri['Umur'] ?></td>
-
-                                    <td> <?php $gender = $all_santri['Jenis_kelamin'] == "L" ? "Laki - laki " : "Perempuan";
+                                    <td> <?= $all_guru['Nama'] ?></td>
+                                    <td> <?= $all_guru['tanggal_lahir'] ?></td>
+                                    <td> <?php $gender = $all_guru['Jenis_kelamin'] == "L" ? "Laki - laki " : "Perempuan";
                                             echo $gender; ?></td>
-                                    <td> <?= $all_santri['Nama_ayah'] ?></td>
-                                    <td> <?= $all_santri['Nama_ibu'] ?></td>
-                                    <td> <?= $all_santri['No_hp'] ?></td>
+                                    <td> <?= $all_guru['no_hp'] ?></td>
+                                    <td><a href="<?= site_url("administrators/action_ver_guru/" . $all_guru['id_guru']) ?>" class="btn btn-info">Verfikasi</a></td>
+
 
 
                                 </tr>

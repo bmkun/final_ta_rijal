@@ -34,15 +34,39 @@ class Main extends CI_Controller
     }
     function register_guru()
     {
-        $this->load->view('tpq/add_guru');
+        $this->load->view('tpq/guru/v_register_guru');
+        // $this->load->view('tpq/add_guru');
     }
+
+
     function action_register()
     {
+        // action register walimurid
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $email = $this->input->post('email');
         $additional_data = null;
         $group = array('3');
+
+        // jika email sudah ada 
+        if ($this->ion_auth->email_check($email) or $this->ion_auth->username_check($username)) {
+            $this->session->set_flashdata('notif', "<script>alert('username atau password sudah digunakan');</script>");
+            redirect('main/register');
+        } else {
+
+            $this->ion_auth->register($username, $password, $email, $additional_data, $group);
+            $this->session->set_flashdata('notif', "<script>alert('Berhasil membuat account silahkan login');</script>");
+            redirect('auth/login');
+        }
+    }
+    function action_register_guru()
+    {
+        // action register guru
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $email = $this->input->post('email');
+        $additional_data = null;
+        $group = array('6');
 
         // jika email sudah ada 
         if ($this->ion_auth->email_check($email) or $this->ion_auth->username_check($username)) {
@@ -108,10 +132,12 @@ class Main extends CI_Controller
             redirect('auth/login', 'refresh');
         } elseif ($this->ion_auth->in_group(4)) {
             redirect('administrators/data_santri', 'refresh');
-        } elseif ($this->ion_auth->in_group(2)) {
-            redirect('guru', 'refresh');
+        } elseif ($this->ion_auth->in_group(6)) {
+            redirect('guru_access/biodata_guru', 'refresh');
         } elseif ($this->ion_auth->in_group(3)) {
             redirect('walimurid_access/biodata_santri', 'refresh');
+        } elseif ($this->ion_auth->in_group(1)) {
+            redirect(base_url(), 'refresh');
         }
     }
 

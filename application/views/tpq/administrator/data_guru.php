@@ -25,26 +25,24 @@
                                 <th> Nama Guru </th>
                                 <th> Jenis Kelamin </th>
                                 <th> Nomor Hp </th>
-                                <th> Ummi </th>
-                                <th> Diniah </th>
+                                <th> Tanggal Lahir</th>
+                                <!-- <th> Diniah </th> -->
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <!-- <td class="py-1">
-                                    <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                                </td> -->
-                                <td> Herman Beck </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td> $ 77.99 </td>
-                                <td> May 15, 2015 </td>
-                                <td> May 15, 2015 </td>
-                            </tr>
 
+                            <?php foreach ($data_guru as $show_data) {
+                            ?>
+                                <tr>
+
+                                    <td> <?= $show_data['Nama'] ?> </td>
+                                    <td><?php $gender = $show_data['Jenis_kelamin'] == "L" ? "Laki - laki " : "Perempuan";
+                                        echo $gender; ?></td>
+                                    <td> <?= $show_data['no_hp'] ?> </td>
+                                    <td> <?= $show_data['tanggal_lahir'] ?> </td>
+
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -8,33 +8,49 @@
          <nav class="sidebar sidebar-offcanvas" id="sidebar">
              <ul class="nav">
                  <li class="nav-item nav-category">Administrator</li>
-                 <li class="nav-item">
+                 <!-- <li class="nav-item">
                      <a class="nav-link" href="<?= site_url("administrators/data_santri") ?>">
-                         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                         <span class="icon-bg"><i class="mdi mdi-account-multiple menu-icon"></i></span>
                          <span class="menu-title">Santri</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <!-- <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                         <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+
+                     <a class="nav-link" href="<?= site_url("administrators/data_guru") ?>">
+                         <span class="icon-bg"><i class="mdi mdi-account-card-details menu-icon"></i></span>
                          <span class="menu-title">Guru</span>
+                     </a>
+                 </li> -->
+
+                 <li class="nav-item">
+                     <a class="nav-link" data-toggle="collapse" href="#ui-ver1" aria-expanded="false" aria-controls="ui-basic">
+                         <span class="icon-bg"><i class="mdi mdi-account-check menu-icon"></i></span>
+                         <span class="menu-title">Biodata</span>
                          <i class="menu-arrow"></i>
                      </a>
-                     <div class="collapse" id="ui-basic">
+                     <div class="collapse" id="ui-ver1">
                          <ul class="nav flex-column sub-menu">
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/data_santri") ?>">Biodata Santri</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/data_guru") ?>">Biodata Guru</a></li>
                          </ul>
-                     </div> -->
-                     <a class="nav-link" href="<?= site_url("administrators/data_guru") ?>">
-                         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                         <span class="menu-title">Guru</span>
+                     </div>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" data-toggle="collapse" href="#ui-ver2" aria-expanded="false" aria-controls="ui-basic">
+                         <span class="icon-bg"><i class="mdi mdi-account-check menu-icon"></i></span>
+                         <span class="menu-title">Verifikasi Biodata</span>
+                         <i class="menu-arrow"></i>
                      </a>
+                     <div class="collapse" id="ui-ver2">
+                         <ul class="nav flex-column sub-menu">
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/verifikasi_santri") ?>">Santri</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/verifikasi_guru") ?>">Guru</a></li>
+                         </ul>
+                     </div>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                         <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                         <span class="icon-bg"><i class="mdi mdi-printer menu-icon"></i></span>
                          <span class="menu-title">Cetak Raport</span>
                          <i class="menu-arrow"></i>
                      </a>
@@ -46,6 +62,22 @@
                          </ul>
                      </div>
                  </li>
+                 <li class="nav-item">
+                     <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                         <span class="icon-bg"><i class="mdi mdi-printer menu-icon"></i></span>
+                         <span class="menu-title">Atur Kelas</span>
+                         <i class="menu-arrow"></i>
+                     </a>
+                     <div class="collapse" id="ui-basic1">
+                         <ul class="nav flex-column sub-menu">
+                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Kelas Guru</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Kelas Murid</a></li>
+
+                         </ul>
+                     </div>
+                 </li>
+
+
                  <!-- <li class="nav-item">
                     <a class="nav-link" href="pages/forms/basic_elements.html">
                         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
@@ -66,16 +98,44 @@
                      <li class="nav-item">
                          <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
                              <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                             <span class="menu-title">Biodata siswa</span>
+                             <span class="menu-title">Biodata Guru</span>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
+                             <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                             <span class="menu-title">Kelas Ummi</span>
                          </a>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="index.html">
                              <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                             <span class="menu-title">Nilai Siswa</span>
+                             <span class="menu-title">Kelas Diniah</span>
                          </a>
                      </li>
 
                  </ul>
              </nav>
-         <?php } ?>
+         <?php } elseif ($sidebar_role == "wali") { ?>
+             <!-- partial -->
+             <div class="container-fluid page-body-wrapper">
+                 <!-- partial:partials/_sidebar.html -->
+                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                     <ul class="nav">
+                         <li class="nav-item nav-category">Wali Murid</li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
+                                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                                 <span class="menu-title">Biodata siswa</span>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="index.html">
+                                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                                 <span class="menu-title">Nilai Siswa</span>
+                             </a>
+                         </li>
+
+                     </ul>
+                 </nav>
+             <?php } ?>
