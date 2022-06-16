@@ -109,4 +109,36 @@ class Administrators extends CI_Controller
 
         $this->load->view("tpq/guru/raport_ummi");
     }
+
+    function kelas_santri_baru()
+    {
+        $data['data_santri'] = $this->m_admin->show_data("santri");
+        $data['sidebar_role'] = "administrator";
+        $data['tittle'] = "Data Santri Kelas Baru";
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/administrator/set_kelas_santribaru", $data);
+        $this->load->view("tpq/footer");
+    }
+
+    function kelas_diniah()
+    {
+        $data['data_santri'] = $this->m_admin->show_data("santri");
+        $data['sidebar_role'] = "administrator";
+        $data['tittle'] = "Data Santri Kelas Diniah";
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/administrator/set_kelas_diniah", $data);
+        $this->load->view("tpq/footer");
+    }
+    function kelas_ummi()
+    {
+        $data['data_santri'] = $this->m_admin->show_data("santri");
+        $data['sidebar_role'] = "administrator";
+        $data['tittle'] = "Data Santri Kelas Ummi";
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/administrator/set_kelas_ummi", $data);
+        $this->load->view("tpq/footer");
+    }
 }

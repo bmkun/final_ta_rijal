@@ -41,7 +41,7 @@
                                             echo $gender; ?></td>
                                     <td> <?= $all_santri['Nama_ayah'] ?></td>
                                     <td> <?= $all_santri['Nama_ibu'] ?></td>
-                                    <td> <?= $all_santri['No_hp'] ?></td>
+                                    <td> <?= $all_santri['No_HP_ortu'] ?></td>
 
 
                                 </tr>

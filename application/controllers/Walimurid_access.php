@@ -26,11 +26,15 @@ class Walimurid_access extends CI_Controller
     {
         $data = [
             'id_santri' => $this->input->post('user_id'),
+            'Tahun_pendaftaran' => date("Y"),
             'Nama' => $this->input->post('nama'),
             'Umur' => $this->input->post('tgl_lahir'),
             'Jenis_kelamin' => $this->input->post('jenis_kelamin'),
             'Nama_ayah' => $this->input->post('ayah'),
-            'Nama_ibu' => $this->input->post('ibu')
+            'Nama_ibu' => $this->input->post('ibu'),
+            'Sekolah_formal' => $this->input->post('sekolah_formal'),
+            'No_HP_ortu' => $this->input->post('no_hp'),
+            'Alamat' => $this->input->post('alamat')
 
         ];
         // print_r($_POST);

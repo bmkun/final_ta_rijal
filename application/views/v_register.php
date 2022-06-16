@@ -33,7 +33,7 @@
               </div>
               
               <h6 class="font-weight-light">Sign in to continue.</h6> -->
-                            <h3 class="text-center">Daftar akun Walimurid</h3>
+                            <h3 class="text-center">Daftar akun Wali Santri</h3>
                             <form class="pt-3" action="<?= site_url("main/action_register") ?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="username">

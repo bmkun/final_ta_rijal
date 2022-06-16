@@ -71,7 +71,7 @@
                      <div class="collapse" id="ui-basic1">
                          <ul class="nav flex-column sub-menu">
                              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Kelas Guru</a></li>
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Kelas Murid</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/kelas_santri_baru") ?>">Kelas Santri</a></li>
 
                          </ul>
                      </div>
@@ -102,16 +102,18 @@
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
-                             <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                             <span class="menu-title">Kelas Ummi</span>
+                         <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                             <span class="icon-bg"><i class="mdi mdi-printer menu-icon"></i></span>
+                             <span class="menu-title">Input Nilai</span>
+                             <i class="menu-arrow"></i>
                          </a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="index.html">
-                             <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                             <span class="menu-title">Kelas Diniah</span>
-                         </a>
+                         <div class="collapse" id="ui-basic1">
+                             <ul class="nav flex-column sub-menu">
+                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Nilai Ummi</a></li>
+                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Nilai Diniah</a></li>
+
+                             </ul>
+                         </div>
                      </li>
 
                  </ul>
@@ -122,17 +124,17 @@
                  <!-- partial:partials/_sidebar.html -->
                  <nav class="sidebar sidebar-offcanvas" id="sidebar">
                      <ul class="nav">
-                         <li class="nav-item nav-category">Wali Murid</li>
+                         <li class="nav-item nav-category">Wali Santri</li>
                          <li class="nav-item">
                              <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
                                  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                                 <span class="menu-title">Biodata siswa</span>
+                                 <span class="menu-title">Biodata Santri</span>
                              </a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link" href="index.html">
                                  <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                                 <span class="menu-title">Nilai Siswa</span>
+                                 <span class="menu-title">Nilai Santri</span>
                              </a>
                          </li>
 

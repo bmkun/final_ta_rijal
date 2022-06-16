@@ -35,7 +35,7 @@
               <h6 class="font-weight-light">Sign in to continue.</h6> -->
               <form class="pt-3" action="<?= site_url("auth/login") ?>" method="POST">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="username" name="identity">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="identity">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="password" name="password">

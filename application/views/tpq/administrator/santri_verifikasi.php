@@ -42,7 +42,7 @@
                                             echo $gender; ?></td>
                                     <td> <?= $all_santri['Nama_ayah'] ?></td>
                                     <td> <?= $all_santri['Nama_ibu'] ?></td>
-                                    <td> <?= $all_santri['No_hp'] ?></td>
+                                    <td> <?= $all_santri['No_HP_ortu'] ?></td>
                                     <td><a href="<?= site_url("administrators/action_ver_santri/" . $all_santri['id']) ?>" class="btn btn-info">Verfikasi</a></td>
 
 
