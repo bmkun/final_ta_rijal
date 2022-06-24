@@ -3,7 +3,7 @@
 
         <div class="page-header">
             <!-- <a target="blank" href="<?= site_url("main/register") ?>" class="btn btn-info">Tambah siswa</a> -->
-            <h3 class="page-title"> Verifikasi Data Santri </h3>
+            <h3 class="page-title"> Verifikasi Data Guru </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>

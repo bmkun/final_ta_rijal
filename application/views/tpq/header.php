@@ -28,8 +28,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="<?= base_url() ?>assets/assets/images/logo.svg" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?= base_url() ?>assets/assets/images/logo-mini.svg" alt="logo" /></a>
+                <!-- <a class="navbar-brand brand-logo" href="index.html"><img src="<?= base_url() ?>assets/assets/images/logo.svg" alt="logo" /></a> -->
+                <!-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?= base_url() ?>assets/assets/images/logo-mini.svg" alt="logo" /></a> -->
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -92,7 +92,15 @@
                                 <img src="<?= base_url() ?>assets/assets/images/faces/face28.png" alt="image">
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Henry Klein</p>
+                                <p class="mb-1 text-black">
+                                    <?php
+                                    $user = $this->ion_auth->user()->row();
+                                    echo $user->email;
+                                    // $username = $this->session->userdata('username');
+                                    // echo $username
+                                    ?>
+                                    <!-- Henry Klein -->
+                                </p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
@@ -108,7 +116,7 @@
                                         <i class="mdi mdi-email-open-outline ml-1"></i>
                                     </span>
                                 </a>
-                                <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="<?= site_url("walimurid_access/biodata_santri") ?>">
+                                <!-- <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="<?= site_url("walimurid_access/biodata_santri") ?>">
                                     <span>Profile</span>
                                     <span class="p-0">
                                         <span class="badge badge-success">1</span>
@@ -124,7 +132,7 @@
                                 <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
                                     <span>Lock Account</span>
                                     <i class="mdi mdi-lock ml-1"></i>
-                                </a>
+                                </a> -->
                                 <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="<?= site_url("auth/logout") ?>">
                                     <span>Log Out</span>
                                     <i class="mdi mdi-logout ml-1"></i>

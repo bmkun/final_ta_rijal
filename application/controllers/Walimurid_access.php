@@ -34,7 +34,9 @@ class Walimurid_access extends CI_Controller
             'Nama_ibu' => $this->input->post('ibu'),
             'Sekolah_formal' => $this->input->post('sekolah_formal'),
             'No_HP_ortu' => $this->input->post('no_hp'),
-            'Alamat' => $this->input->post('alamat')
+            'Alamat' => $this->input->post('alamat'),
+            'Kelas_ummi' => null,
+            'Kelas_diniah' => null
 
         ];
         // print_r($_POST);

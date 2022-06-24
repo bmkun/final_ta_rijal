@@ -1,17 +1,17 @@
 <div class="main-panel">
     <div class="content-wrapper">
-
-        <div class="page-header">
-
-            <h3 class="page-title"> Formulir Data Santri </h3>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-            </nav>
-        </div>
         <?php if ($status_biodata == "nothing") { ?>
+            <div class="page-header">
+
+                <h3 class="page-title"> Formulir Data Santri </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                    </ol>
+                </nav>
+            </div>
+
             <div class="card">
                 <div class="card-body">
                     <form class="forms-sample" method="POST" action="<?= site_url("walimurid_access/submit_biodata") ?>">
@@ -62,6 +62,18 @@
             </div>
         <?php } else if ($status_biodata == "done") { ?>
             <!-- sudah diisi -->
+
+            <div class="page-header">
+
+                <h3 class="page-title"> Data Santri </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                    </ol>
+                </nav>
+            </div>
+
             <div class="card">
                 <div class="card-body">
                     <form class="forms-sample" method="POST" action="<?= site_url("walimurid_access/submit_biodata") ?>">

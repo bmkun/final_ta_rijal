@@ -70,7 +70,7 @@
                      </a>
                      <div class="collapse" id="ui-basic1">
                          <ul class="nav flex-column sub-menu">
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Kelas Guru</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/kelas_guru") ?>">Kelas Guru</a></li>
                              <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/kelas_santri_baru") ?>">Kelas Santri</a></li>
 
                          </ul>
