@@ -203,7 +203,8 @@ class Administrators extends CI_Controller
         $this->db->update('santri', $data);
 
         $kelas =  $this->input->cookie('kelas_diniah', true);
-        redirect('administrators/kelas_diniah/') . $kelas;
+        // print_r($kelas);
+        redirect('administrators/kelas_diniah/' . $kelas);
     }
     function action_kelas_santri_ummi($kelas = "1")
     {

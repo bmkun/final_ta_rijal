@@ -49,6 +49,7 @@ class M_admin extends CI_Model
 
     function list_kelas($tabel)
     {
+
         return $this->db->get($tabel)->result_array();
     }
 
@@ -64,6 +65,7 @@ class M_admin extends CI_Model
         $query = $this->db->query("SELECT * FROM santri INNER JOIN kelas_ummi ON santri.`Kelas_ummi` = kelas_ummi.`id_kelas_ummi` WHERE Kelas_ummi='$kelas';")->result_array();
         return $query;
     }
+    // not good
     function kelas_guru($tabel)
     {
         $query = $this->db->query("
