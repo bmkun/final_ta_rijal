@@ -24,14 +24,14 @@
 
                  <li class="nav-item">
                      <a class="nav-link" data-toggle="collapse" href="#ui-ver1" aria-expanded="false" aria-controls="ui-basic">
-                         <span class="icon-bg"><i class="mdi mdi-account-check menu-icon"></i></span>
-                         <span class="menu-title">Biodata</span>
+                         <span class="icon-bg"><i class="mdi mdi-account-box menu-icon"></i></span>
+                         <span class="menu-title">Data</span>
                          <i class="menu-arrow"></i>
                      </a>
                      <div class="collapse" id="ui-ver1">
                          <ul class="nav flex-column sub-menu">
-                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/data_santri") ?>">Biodata Santri</a></li>
-                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/data_guru") ?>">Biodata Guru</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/data_santri") ?>">Santri</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/data_guru") ?>">Guru</a></li>
                          </ul>
                      </div>
                  </li>
@@ -64,7 +64,7 @@
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
-                         <span class="icon-bg"><i class="mdi mdi-printer menu-icon"></i></span>
+                         <span class="icon-bg"><i class="mdi mdi-home menu-icon"></i></span>
                          <span class="menu-title">Atur Kelas</span>
                          <i class="menu-arrow"></i>
                      </a>
@@ -94,7 +94,7 @@
              <!-- partial:partials/_sidebar.html -->
              <nav class="sidebar sidebar-offcanvas" id="sidebar">
                  <ul class="nav">
-                     <li class="nav-item nav-category">Main</li>
+                     <li class="nav-item nav-category">Administrator</li>
                      <li class="nav-item">
                          <a class="nav-link" href="<?= site_url("walimurid_access/biodata_santri") ?>">
                              <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>

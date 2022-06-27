@@ -13,7 +13,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
                     <?php foreach ($list_kelas_diniyah as $diniah) { ?>
-                        <a class="dropdown-item" href="<?= site_url("administrators/kelas_diniah/") ?><?= $diniah['id_kelas_dinniyah'] ?>"><?= $diniah['Kelas'] ?></a>
+                        <a class="dropdown-item" href="<?= site_url("administrators/kelas_diniah/") ?><?= $diniah['id_kelas'] ?>"><?= $diniah['Kelas'] ?></a>
                         <!-- <a class="dropdown-item" href="<?= site_url("administrators/kelas_diniah/2") ?>">WustHo A</a>
                         <a class="dropdown-item" href="<?= site_url("administrators/kelas_diniah/3") ?>">Wustho B</a>
                         <a class="dropdown-item" href="<?= site_url("administrators/kelas_diniah/4") ?>">Kubro</a> -->
@@ -118,7 +118,7 @@
                                 <label for="recipient-name" class="col-form-label">Kelas Diniah</label>
                                 <select class="form-control" id="recipient-name" name="Kelas_diniah">
                                     <?php foreach ($list_kelas_diniyah as $kelas2) { ?>
-                                        <option value="<?= $kelas2['id_kelas_dinniyah'] ?>"><?= $kelas2['Kelas'] ?></option>
+                                        <option value="<?= $kelas2['id_kelas'] ?>"><?= $kelas2['Kelas'] ?></option>
 
                                     <?php } ?>
                                 </select>

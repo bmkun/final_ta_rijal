@@ -13,7 +13,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
                     <?php foreach ($list_kelas_ummi as $kelas_ummi) { ?>
-                        <a class="dropdown-item" href="<?= site_url("administrators/kelas_ummi/") ?><?= $kelas_ummi['id_kelas_ummi'] ?>"><?= $kelas_ummi['Kelas'] ?></a>
+                        <a class="dropdown-item" href="<?= site_url("administrators/kelas_ummi/") ?><?= $kelas_ummi['id_kelas'] ?>"><?= $kelas_ummi['Kelas'] ?></a>
                         <!-- <a class="dropdown-item" href="#">Ummi 1</a>
                     <a class="dropdown-item" href="#">Ummi 2</a>
                     <a class="dropdown-item" href="#">Ummi 3</a>
@@ -117,7 +117,7 @@
                                 <label for="recipient-name" class="col-form-label">Kelas Diniah</label>
                                 <select class="form-control" id="recipient-name" name="Kelas_ummi">
                                     <?php foreach ($list_kelas_ummi as $kelas2) { ?>
-                                        <option value="<?= $kelas2['id_kelas_ummi'] ?>"><?= $kelas2['Kelas'] ?></option>
+                                        <option value="<?= $kelas2['id_kelas'] ?>"><?= $kelas2['Kelas'] ?></option>
 
                                     <?php } ?>
                                 </select>

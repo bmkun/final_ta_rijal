@@ -114,7 +114,7 @@
 
                                 <select class="form-control" id="recipient-name" name="Kelas_diniah">
                                     <?php foreach ($list_kelas_diniyah as $kelas) { ?>
-                                        <option value="<?= $kelas['id_kelas_dinniyah'] ?>"><?= $kelas['Kelas'] ?></option>
+                                        <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['Kelas'] ?></option>
 
                                     <?php } ?>
                                 </select>
@@ -123,7 +123,7 @@
                                 <label for="recipient-name" class="col-form-label">Kelas Ummi</label>
                                 <select class="form-control" id="recipient-name" name="Kelas_ummi">
                                     <?php foreach ($list_kelas_ummi as $kelas2) { ?>
-                                        <option value="<?= $kelas2['id_kelas_ummi'] ?>"><?= $kelas2['Kelas'] ?></option>
+                                        <option value="<?= $kelas2['id_kelas'] ?>"><?= $kelas2['Kelas'] ?></option>
 
                                     <?php } ?>
                                 </select>

@@ -122,11 +122,14 @@ class Administrators extends CI_Controller
         );
         $this->input->set_cookie($cookie);
         // list kelas diniah dan ummi
-        $data['list_kelas_diniyah'] = $this->m_admin->list_kelas("kelas_dinniyah");
+        $data['list_kelas_diniyah'] = $this->m_admin->list_kelas('kelas', 'diniah');
         // list kelas diniah dan ummi 
 
+
         // pilih santri berdasarkan kelas 
-        $data['data_santri'] = $this->m_admin->kelas_santri_diniah($kelas);
+        $data['data_santri'] = $this->m_admin->kelas_santri('diniah', $kelas);
+
+
         // pilih santri berdasarkan kelas 
 
         $data['sidebar_role'] = "administrator";
@@ -144,15 +147,17 @@ class Administrators extends CI_Controller
             'expire' => '300',
         );
         $this->input->set_cookie($cookie);
-
-        // list ruang kelas diniah dan ummi
-        $data['list_kelas_ummi'] = $this->m_admin->list_kelas("kelas_ummi");
+        // list kelas diniah dan ummi
+        $data['list_kelas_ummi'] = $this->m_admin->list_kelas('kelas', 'ummi');
         // list kelas diniah dan ummi 
 
+
         // pilih santri berdasarkan kelas 
-        $data['data_santri'] = $this->m_admin->kelas_santri_ummi($kelas);
+        $data['data_santri'] = $this->m_admin->kelas_santri('ummi', $kelas);
+
+        // print_r($data['data_santri']);
         // pilih santri berdasarkan kelas 
-        // $data['data_santri'] = $this->m_admin->show_data("santri");
+
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "Data Santri Kelas Ummi";
         $this->load->view("tpq/header", $data);
@@ -164,11 +169,14 @@ class Administrators extends CI_Controller
     function kelas_santri_baru()
     {
         // list kelas diniah dan ummi
-        $data['list_kelas_diniyah'] = $this->m_admin->list_kelas("kelas_dinniyah");
-        $data['list_kelas_ummi'] = $this->m_admin->list_kelas("kelas_ummi");
+        $data['list_kelas_diniyah'] = $this->m_admin->list_kelas("kelas", 'diniah');
+        $data['list_kelas_ummi'] = $this->m_admin->list_kelas("kelas", 'ummi');
+
+
+
         // list kelas diniah dan ummi 
         // seluruh data santri yang sudah diverifikasi dan belum mendapat kelas 
-        $data['set_kelas_baru'] = $this->m_admin->set_kelas_baru();
+        $data['set_kelas_baru'] = $this->m_admin->santri_baru();
         // seluruh data santri yang sudah diverifikasi dan belum mendapat kelas
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "Data Santri Kelas Baru";

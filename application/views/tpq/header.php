@@ -89,10 +89,13 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                             <div class="nav-profile-img">
-                                <img src="<?= base_url() ?>assets/assets/images/faces/face28.png" alt="image">
+                                <img src="<?= base_url() ?>assets/assets/images/faces/user009.png" alt="image">
+                                <!-- <i class="mdi mdi-24px mdi-account-circle"></i> -->
                             </div>
                             <div class="nav-profile-text">
+
                                 <p class="mb-1 text-black">
+
                                     <?php
                                     $user = $this->ion_auth->user()->row();
                                     echo $user->email;
