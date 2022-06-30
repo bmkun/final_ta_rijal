@@ -34,9 +34,9 @@
               <h6 class="font-weight-light">Sign in to continue.</h6> -->
                             <h3 class="text-center">Daftar akun Guru</h3>
                             <form class="pt-3" action="<?= site_url("main/action_register_guru") ?>" method="POST">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="username">
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="email">
                                 </div>

@@ -12,7 +12,6 @@ class Guru_access extends CI_Controller
 
     function biodata_guru()
     {
-
         $data['sidebar_role'] = "guru";
         $data['tittle'] = "Biodata Guru";
         $data['status_biodata'] = $this->m_guru->biodata_check();

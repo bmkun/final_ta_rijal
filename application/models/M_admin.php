@@ -19,17 +19,43 @@ class M_admin extends CI_Model
     function verified_account($id, $table)
     {
         // verifikasi submit biodata oleh admin
-        $data = array(
-            'Verification' => "Y",
 
-        );
         if ($table == "santri") {
+            $data = array(
+                'Verification' => "Y",
+
+            );
             $this->db->where('id', $id);
         } else {
+            $data = array(
+                'Verification' => "Y",
+                'Status_guru' => "aktif"
+
+            );
             $this->db->where('id_guru', $id);
         }
 
         $this->db->update($table, $data);
+    }
+
+    function status_guru($id_guru, $status_guru)
+    {
+
+        if ($status_guru == 'aktif') {
+            $data = array(
+                'Status_guru' => 'nonaktif'
+            );
+        } else {
+            $data = array(
+                'Status_guru' => 'aktif'
+            );
+        }
+
+
+        $this->db->where('id_guru', $id_guru);
+
+
+        $this->db->update('guru', $data);
     }
 
     function pilih_kelas($kelas)
@@ -68,15 +94,24 @@ class M_admin extends CI_Model
 
 
     // not good
-    function kelas_guru($tabel)
+    function kelas_guru($kd_kelas)
     {
+
         // query belum dicoba
 
-        // SELECT * FROM kelas_guru 
-        // INNER JOIN guru ON kelas_guru.`id_guru` = guru.`id_guru` 
-        // INNER JOIN kelas ON kelas_guru.`id_kelas` = kelas.`id_kelas` WHERE Status_guru = 'aktif' && kls_guru_status = 'aktif';
+        $query = $this->db->query("
+    SELECT * FROM kelas_guru 
+    INNER JOIN guru ON kelas_guru.`id_guru` = guru.`id_guru` 
+    INNER JOIN kelas ON kelas_guru.`id_kelas` = kelas.`id_kelas` WHERE kd_kelas ='$kd_kelas'
+    and Status_guru='aktif' ORDER BY guru.id_guru ASC
+    ")->result_array();
 
+        return $query;
+    }
 
+    function show_all_kelas($kd_kelas)
+    {
 
+        return $this->db->query("SELECT * FROM kelas WHERE kd_kelas='$kd_kelas'")->result_array();
     }
 }

@@ -26,15 +26,15 @@
                 if ($tittle == "Data Santri Kelas Diniah") { ?>
                     <a href="<?= site_url("administrators/kelas_santri_baru") ?>" class="btn btn-success">Santri Baru</a>
                     <a href="<?= site_url("administrators/kelas_diniah/1") ?>" class="btn btn-success active">Kelas Diniah</a>
-                    <a href="<?= site_url("administrators/kelas_ummi") ?>" class="btn btn-success">Kelas Ummi</a>
+                    <a href="<?= site_url("administrators/kelas_ummi/6") ?>" class="btn btn-success">Kelas Ummi</a>
                 <?php } elseif ($tittle == "Data Santri Kelas Ummi") { ?>
                     <a href="<?= site_url("administrators/kelas_santri_baru") ?>" class="btn btn-success">Santri Baru</a>
                     <a href="<?= site_url("administrators/kelas_diniah/1") ?>" class="btn btn-success">Kelas Diniah</a>
-                    <a href="<?= site_url("administrators/kelas_ummi") ?>" class="btn btn-success active">Kelas Ummi</a>
+                    <a href="<?= site_url("administrators/kelas_ummi/6") ?>" class="btn btn-success active">Kelas Ummi</a>
                 <?php } else { ?>
                     <a href="<?= site_url("administrators/kelas_santri_baru") ?>" class="btn btn-success active">Santri Baru</a>
                     <a href="<?= site_url("administrators/kelas_diniah/1") ?>" class="btn btn-success">Kelas Diniah</a>
-                    <a href="<?= site_url("administrators/kelas_ummi") ?>" class="btn btn-success">Kelas Ummi</a>
+                    <a href="<?= site_url("administrators/kelas_ummi/6") ?>" class="btn btn-success">Kelas Ummi</a>
                 <?php } ?>
             </div>
             <!-- pilih kelas -->

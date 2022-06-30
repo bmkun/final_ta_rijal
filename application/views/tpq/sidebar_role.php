@@ -63,14 +63,14 @@
                      </div>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                     <a class="nav-link" data-toggle="collapse" href="#ui-basic12" aria-expanded="false" aria-controls="ui-basic">
                          <span class="icon-bg"><i class="mdi mdi-home menu-icon"></i></span>
                          <span class="menu-title">Atur Kelas</span>
                          <i class="menu-arrow"></i>
                      </a>
-                     <div class="collapse" id="ui-basic1">
+                     <div class="collapse" id="ui-basic12">
                          <ul class="nav flex-column sub-menu">
-                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/kelas_guru") ?>">Kelas Guru</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/kelas_guru_diniah") ?>">Kelas Guru</a></li>
                              <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/kelas_santri_baru") ?>">Kelas Santri</a></li>
 
                          </ul>

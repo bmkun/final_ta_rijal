@@ -45,6 +45,11 @@ class Administrators extends CI_Controller
         $this->load->view("tpq/administrator/data_guru", $data);
         $this->load->view("tpq/footer");
     }
+    function status_guru($id_guru, $status_guru)
+    {
+        $this->m_admin->status_guru($id_guru, $status_guru);
+        redirect("administrators/data_guru");
+    }
     function data_santri()
     {
         $data['data_santri'] = $this->m_admin->show_data("santri");
@@ -108,7 +113,9 @@ class Administrators extends CI_Controller
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "raport ummi";
 
-        $this->load->view("tpq/guru/raport_ummi");
+
+
+        $this->load->view("tpq/administrator/raport_ummi");
     }
     function kelas_diniah($kelas = '1')
     {
@@ -214,7 +221,7 @@ class Administrators extends CI_Controller
         // print_r($kelas);
         redirect('administrators/kelas_diniah/' . $kelas);
     }
-    function action_kelas_santri_ummi($kelas = "1")
+    function action_kelas_santri_ummi($kelas = "6")
     {
 
 
@@ -227,37 +234,70 @@ class Administrators extends CI_Controller
         $kelas =  $this->input->cookie('kelas_ummi', true);
         redirect('administrators/kelas_ummi/' . $kelas);
     }
-
-
-    // @update kelas ummi : memindahkan kelas santri ummi
-
-    function kelas_guru()
+    // menampilkan seluruh guru yang mengajar pada kelas diniah
+    function kelas_guru_diniah()
     {
-        // list kelas diniah dan ummi
-        $data['list_kelas_diniyah'] = $this->m_admin->list_kelas("kelas_dinniyah");
-        $data['list_kelas_ummi'] = $this->m_admin->list_kelas("kelas_ummi");
-        // list kelas diniah dan ummi 
-        // daftar semua guru
-        $data["list_guru"] = $this->m_admin->kelas_guru("guru");
+        $data['data_guru'] = $this->m_admin->show_data("guru");
+        $data['list_guru'] = $this->m_admin->kelas_guru('diniah');
+        $data['list_kelas_guru'] = $this->m_admin->kelas_guru('diniah');
+        $data['all_kelas'] = $this->m_admin->show_all_kelas('diniah');
 
         $data['sidebar_role'] = "administrator";
-        $data['tittle'] = "Data Kelas Guru";
+        $data['tittle'] = "Data Kelas Guru Diniah";
         $this->load->view("tpq/header", $data);
         $this->load->view("tpq/sidebar_role", $data);
         $this->load->view("tpq/administrator/set_kelas_guru", $data);
         $this->load->view("tpq/footer");
     }
 
-    // menambahkan kelas pada santri baru
+    // menampilkan seluruh guru yang mengajar pada kelas ummi
+    function kelas_guru_ummi()
+    {
+        // tampilkan seluruh data guru untuk dropdown 
+        $data['data_guru'] = $this->m_admin->show_data("guru");
+        // tampilkan seluruh guru yang berada pada kelas ummi
+        $data['list_guru'] = $this->m_admin->kelas_guru('ummi');
+        // tampilkan seluruh ruang kelas
+        $data['all_kelas'] = $this->m_admin->show_all_kelas('ummi');
+        // tampilkan seluruh guru yang berada pada kelas ummi
+        $data['list_kelas_guru'] = $this->m_admin->kelas_guru('ummi');
+
+
+
+        $data['sidebar_role'] = "administrator";
+        $data['tittle'] = "Data Kelas Guru Ummi";
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/administrator/set_kelas_guru", $data);
+        $this->load->view("tpq/footer");
+    }
+
     function action_kelas_guru()
     {
 
         $data = array(
-            'Kelas_ummi' => $this->input->post("Kelas_ummi"),
-            'Kelas_diniah' => $this->input->post("Kelas_diniah"),
+            'id_guru' => $this->input->post('id_guru'),
+            'id_kelas' => $this->input->post('id_kelas')
         );
-        $this->db->where('id_guru', $this->input->post("id_santri"));
-        $this->db->update('guru', $data);
-        redirect('administrators/kelas_guru');
+
+        $this->db->insert('kelas_guru', $data);
+        // redirect('')
+    }
+
+    function update_kelas_guru($kd_kelas)
+    {
+        $data = array(
+            'id_kelas' => $this->input->post("id_kelas"),
+        );
+
+        $this->db->where('id_kelas_guru', $this->input->post("id_kelas_guru"));
+        $this->db->update('kelas_guru', $data);
+
+        // redirect berdasarkan param get $kd_kelas
+        if ($kd_kelas == 'ummi') {
+            redirect("administrators/kelas_guru_ummi");
+        } else {
+            redirect("administrators/kelas_guru_diniah");
+        }
     }
 }

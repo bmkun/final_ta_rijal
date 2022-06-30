@@ -26,6 +26,7 @@
                                 <th> Jenis Kelamin </th>
                                 <th> Nomor Hp </th>
                                 <th> Tanggal Lahir</th>
+                                <th>Aksi</th>
                                 <!-- <th> Diniah </th> -->
                             </tr>
                         </thead>
@@ -40,6 +41,18 @@
                                         echo $gender; ?></td>
                                     <td> <?= $show_data['no_hp'] ?> </td>
                                     <td> <?= $show_data['tanggal_lahir'] ?> </td>
+                                    <td>
+                                        <?php if ($show_data['Status_guru'] != 'aktif') { ?>
+                                            <a href="<?= site_url('administrators/status_guru/') . $show_data['id_guru'] . '/' . 'nonaktif' ?>" class="btn btn-success">
+                                                Aktifkan
+                                            </a>
+                                        <?php } elseif ($show_data['Status_guru'] == 'aktif') { ?>
+                                            <a href="<?= site_url('administrators/status_guru/') . $show_data['id_guru'] . '/' . $show_data['Status_guru'] ?>" class="btn btn-danger">
+                                                Non Aktifkan
+                                            </a>
+                                        <?php } ?>
+
+                                    </td>
 
                                 </tr>
                             <?php } ?>
