@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url() ?>assets/assets/images/favicon.png" />
+    <style type="text/css">
+        .logo {
+            max-width: 25%;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,10 +34,9 @@
                 <div class="row flex-grow">
                     <div class="col-lg-6 mx-auto">
                         <div class="auth-form-light text-left p-5">
-                            <!-- <div class="brand-logo">
-                <img src="../../assets/images/logo-dark.svg">
-              </div>
-              <h6 class="font-weight-light">Sign in to continue.</h6> -->
+                            <div class="brand-logo text-center">
+                                <img class="logo" src="<?= site_url("assets/assets/images/assifa.jpg") ?>">
+                            </div>
                             <h3 class="text-center">Daftar akun Guru</h3>
                             <form class="pt-3" action="<?= site_url("main/action_register_guru") ?>" method="POST">
                                 <!-- <div class="form-group">

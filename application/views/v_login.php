@@ -19,6 +19,12 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <style type="text/css">
+        .logo {
+            max-width: 25%;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,6 +54,9 @@
                             <!-- <img src="https://technext.github.io/adminmart/assets/images/big/icon.png" alt="wrapkit"> -->
                         </div>
                         <div id="infoMessage"></div>
+                        <div class="brand-logo text-center">
+                            <img class="logo" src="<?= site_url("assets/assets/images/assifa.jpg") ?>">
+                        </div>
                         <div style="margin-top: 50px;"></div>
                         <h3 class=" mt-3 text-center">Login Affiliate System</h3>
                         <!-- <p class="text-center">Gunakan email and password Anda Untuk mengakses Partner Area.</p> -->

@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/assets/css/style.css">
   <!-- End layout styles -->
   <link rel="shortcut icon" href="<?= base_url() ?>assets/assets/images/favicon.png" />
+  <style type="text/css">
+    .logo {
+      max-width: 40%;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -28,11 +34,11 @@
         <div class="row flex-grow">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left p-5">
-              <!-- <div class="brand-logo">
-                <img src="../../assets/images/logo-dark.svg">
+              <div class="brand-logo  text-center">
+                <img class="logo" src="<?= site_url("assets/assets/images/assifa.jpg") ?>">
               </div>
-              <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6> -->
+
+
               <form class="pt-3" action="<?= site_url("auth/login") ?>" method="POST">
                 <div class="form-group">
                   <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="identity">

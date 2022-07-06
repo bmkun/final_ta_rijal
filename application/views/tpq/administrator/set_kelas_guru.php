@@ -1,10 +1,6 @@
 <div class="main-panel">
     <div class="content-wrapper">
-
-
-
         <div class="page-header">
-
             <button title="tambah kelas guru" class="btn btn-success" data-toggle="modal" data-target="#set_kelas_guru"><i class="mdi mdi-24px mdi-account-multiple-plus"> </i></button>
 
             <!-- pilih kelas -->
@@ -74,8 +70,6 @@
 
 
     <!-- Modal tambah kelas guru-->
-
-
     <div class="modal fade" id="set_kelas_guru" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -87,7 +81,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form method="POST" action="<?= site_url("administrators/action_kelas_guru/") ?>">
+                    <form method="POST" action="<?= site_url("administrators/action_kelas_guru/") . $kd_direct ?>">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Kelas Diniyah</label>
                             <!-- <input type="text" class="form-control" id="recipient-name"> -->

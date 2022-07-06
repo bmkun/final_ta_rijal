@@ -241,7 +241,7 @@ class Administrators extends CI_Controller
         $data['list_guru'] = $this->m_admin->kelas_guru('diniah');
         $data['list_kelas_guru'] = $this->m_admin->kelas_guru('diniah');
         $data['all_kelas'] = $this->m_admin->show_all_kelas('diniah');
-
+        $data['kd_direct'] = 'diniah';
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "Data Kelas Guru Diniah";
         $this->load->view("tpq/header", $data);
@@ -263,7 +263,7 @@ class Administrators extends CI_Controller
         $data['list_kelas_guru'] = $this->m_admin->kelas_guru('ummi');
 
 
-
+        $data['kd_direct'] = 'ummi';
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "Data Kelas Guru Ummi";
         $this->load->view("tpq/header", $data);
@@ -271,8 +271,8 @@ class Administrators extends CI_Controller
         $this->load->view("tpq/administrator/set_kelas_guru", $data);
         $this->load->view("tpq/footer");
     }
-
-    function action_kelas_guru()
+    // tambah kelas guru
+    function action_kelas_guru($kd_direct)
     {
 
         $data = array(
@@ -281,7 +281,12 @@ class Administrators extends CI_Controller
         );
 
         $this->db->insert('kelas_guru', $data);
-        // redirect('')
+
+        if ($kd_direct == 'ummi') {
+            redirect("administrators/kelas_guru_ummi");
+        } else {
+            redirect("administrators/kelas_guru_diniah");
+        }
     }
 
     function update_kelas_guru($kd_kelas)
