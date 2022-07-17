@@ -99,6 +99,7 @@
                                     <?php
                                     $user = $this->ion_auth->user()->row();
                                     echo $user->email;
+
                                     // $username = $this->session->userdata('username');
                                     // echo $username
                                     ?>

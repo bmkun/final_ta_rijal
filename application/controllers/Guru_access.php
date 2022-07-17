@@ -46,4 +46,36 @@ class Guru_access extends CI_Controller
         $this->m_guru->insert_data('guru', $data);
         redirect('guru_access/biodata_guru');
     }
+    function nilai_ummi()
+    {
+
+        $data['kelas_guru_ummi'] = $this->m_guru->kelas_guru('diniah');
+        print_r($data['kelas_guru_ummi'][0]['id_kelas']);
+        print_r($data['kelas_guru_ummi'][1]['id_kelas']);
+        //  $data['kelas_guru_ummi'][0];
+
+        // $data['sidebar_role'] = "guru";
+        // $data['tittle'] = "Biodata Guru";
+        // $this->load->view("tpq/header", $data);
+        // $this->load->view("tpq/sidebar_role", $data);
+        // $this->load->view("tpq/guru/input_nilai_ummi", $data);
+        // $this->load->view("tpq/footer");
+    }
+    function nilai_diniah()
+    {
+
+        $data['kelas_guru_ummi'] = $this->m_guru->kelas_guru('diniah');
+        $kelas1 = $data['kelas_guru_ummi'][0]['id_kelas'];
+        $kelas2 = $data['kelas_guru_ummi'][1]['id_kelas'];
+
+        $data['santri'] = $this->m_guru->santri_diniah($kelas1, $kelas2);
+        print_r($data['santri']);
+
+        $data['sidebar_role'] = "guru";
+        $data['tittle'] = "Biodata Guru";
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/guru/input_nilai_diniah", $data);
+        $this->load->view("tpq/footer");
+    }
 }

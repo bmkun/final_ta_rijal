@@ -134,7 +134,7 @@ class Administrators extends CI_Controller
 
 
         // pilih santri berdasarkan kelas 
-        $data['data_santri'] = $this->m_admin->kelas_santri('diniah', $kelas);
+        $data['data_santri'] = $this->m_admin->kelas_santri('kelas_santri_diniah', $kelas);
 
 
         // pilih santri berdasarkan kelas 
@@ -160,7 +160,7 @@ class Administrators extends CI_Controller
 
 
         // pilih santri berdasarkan kelas 
-        $data['data_santri'] = $this->m_admin->kelas_santri('ummi', $kelas);
+        $data['data_santri'] = $this->m_admin->kelas_santri('kelas_santri_ummi', $kelas);
 
         // print_r($data['data_santri']);
         // pilih santri berdasarkan kelas 
@@ -175,15 +175,17 @@ class Administrators extends CI_Controller
     // menampilkan seluruh santri yang belum memiliki kelas
     function kelas_santri_baru()
     {
+
+
+
+
         // list kelas diniah dan ummi
         $data['list_kelas_diniyah'] = $this->m_admin->list_kelas("kelas", 'diniah');
         $data['list_kelas_ummi'] = $this->m_admin->list_kelas("kelas", 'ummi');
 
-
-
-        // list kelas diniah dan ummi 
         // seluruh data santri yang sudah diverifikasi dan belum mendapat kelas 
-        $data['set_kelas_baru'] = $this->m_admin->santri_baru();
+        $data['set_kelas_ummi'] = $this->m_admin->santri_ummi_baru();
+        $data['set_kelas_diniah'] = $this->m_admin->santri_diniah_baru();
         // seluruh data santri yang sudah diverifikasi dan belum mendapat kelas
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "Data Santri Kelas Baru";
@@ -193,43 +195,54 @@ class Administrators extends CI_Controller
         $this->load->view("tpq/footer");
     }
     // menambahkan kelas pada santri baru
-    function action_kelas_santri_baru($kelas = "1")
+    function action_kelas_santri_baru_diniah()
     {
-        // print_r($this->input->post("Kelas_ummi"));
+
         $data = array(
-            'Kelas_ummi' => $this->input->post("Kelas_ummi"),
-            'Kelas_diniah' => $this->input->post("Kelas_diniah"),
+            'id_santri' => $this->input->post("id_santri"),
+            'id_kelas' => $this->input->post("id_kelas"),
         );
-        $this->db->where('id_santri', $this->input->post("id_santri"));
-        $this->db->update('santri', $data);
-        redirect('administrators/kelas_santri_baru/') . $kelas;
+
+
+        $this->db->insert('kelas_santri_diniah', $data);
+        redirect('administrators/kelas_santri_baru/');
+    }
+    function action_kelas_santri_baru_ummi()
+    {
+
+        $data = array(
+            'id_santri' => $this->input->post("id_santri"),
+            'id_kelas' => $this->input->post("id_kelas"),
+        );
+
+
+        $this->db->insert('kelas_santri_ummi', $data);
+        redirect('administrators/kelas_santri_baru/');
     }
 
     // @update kelas diniah : memindahkan kelas santri diniah
     function action_kelas_santri_diniah($kelas = "1")
     {
-        // print_r($this->input->post("url-param"));
-
-
         $data = array(
-            'Kelas_diniah' => $this->input->post("Kelas_diniah"),
+            'id_kelas' => $this->input->post("id_kelas")
         );
+
+
+        print_r($data);
         $this->db->where('id_santri', $this->input->post("id_santri"));
-        $this->db->update('santri', $data);
+        $this->db->update('kelas_santri_diniah', $data);
 
         $kelas =  $this->input->cookie('kelas_diniah', true);
-        // print_r($kelas);
+
         redirect('administrators/kelas_diniah/' . $kelas);
     }
     function action_kelas_santri_ummi($kelas = "6")
     {
-
-
         $data = array(
-            'Kelas_ummi' => $this->input->post("Kelas_ummi"),
+            'id_kelas' => $this->input->post("id_kelas"),
         );
         $this->db->where('id_santri', $this->input->post("id_santri"));
-        $this->db->update('santri', $data);
+        $this->db->update('kelas_santri_ummi', $data);
 
         $kelas =  $this->input->cookie('kelas_ummi', true);
         redirect('administrators/kelas_ummi/' . $kelas);
@@ -237,10 +250,13 @@ class Administrators extends CI_Controller
     // menampilkan seluruh guru yang mengajar pada kelas diniah
     function kelas_guru_diniah()
     {
-        $data['data_guru'] = $this->m_admin->show_data("guru");
-        $data['list_guru'] = $this->m_admin->kelas_guru('diniah');
-        $data['list_kelas_guru'] = $this->m_admin->kelas_guru('diniah');
-        $data['all_kelas'] = $this->m_admin->show_all_kelas('diniah');
+        $data['data_guru'] = $this->m_admin->show_data("guru"); //data guru tabe guru
+        $data['list_guru'] = $this->m_admin->kelas_guru('diniah'); // tampilkan seluruh guru di tabel body 
+        $data['list_kelas_guru'] = $this->m_admin->kelas_guru('diniah'); //ditampilkan di modal (edit)
+        $data['all_kelas'] = $this->m_admin->show_all_kelas('diniah'); // semua kelas yang ada di diniah
+        $data['mapel'] = $this->m_admin->mapel('diniah'); //menampilka seluruh matapelajaran
+
+        // print_r($data['mapel']);
         $data['kd_direct'] = 'diniah';
         $data['sidebar_role'] = "administrator";
         $data['tittle'] = "Data Kelas Guru Diniah";
@@ -253,14 +269,22 @@ class Administrators extends CI_Controller
     // menampilkan seluruh guru yang mengajar pada kelas ummi
     function kelas_guru_ummi()
     {
-        // tampilkan seluruh data guru untuk dropdown 
-        $data['data_guru'] = $this->m_admin->show_data("guru");
-        // tampilkan seluruh guru yang berada pada kelas ummi
-        $data['list_guru'] = $this->m_admin->kelas_guru('ummi');
-        // tampilkan seluruh ruang kelas
-        $data['all_kelas'] = $this->m_admin->show_all_kelas('ummi');
-        // tampilkan seluruh guru yang berada pada kelas ummi
-        $data['list_kelas_guru'] = $this->m_admin->kelas_guru('ummi');
+
+
+        $data['data_guru'] = $this->m_admin->show_data("guru"); //data guru tabe guru
+        $data['list_guru'] = $this->m_admin->kelas_guru('ummi'); // tampilkan seluruh guru di tabel body 
+        $data['list_kelas_guru'] = $this->m_admin->kelas_guru('ummi'); //ditampilkan di modal (edit)
+        $data['all_kelas'] = $this->m_admin->show_all_kelas('ummi'); // semua kelas yang ada di diniah
+        $data['mapel'] = $this->m_admin->mapel('ummi'); //menampilka seluruh matapelajaran
+
+        // // tampilkan seluruh data guru untuk dropdown 
+        // $data['data_guru'] = $this->m_admin->show_data("guru");
+        // // tampilkan seluruh guru yang berada pada kelas ummi
+        // $data['list_guru'] = $this->m_admin->kelas_guru('ummi');
+        // // tampilkan seluruh ruang kelas
+        // $data['all_kelas'] = $this->m_admin->show_all_kelas('ummi');
+        // // tampilkan seluruh guru yang berada pada kelas ummi
+        // $data['list_kelas_guru'] = $this->m_admin->kelas_guru('ummi');
 
 
         $data['kd_direct'] = 'ummi';
@@ -277,7 +301,8 @@ class Administrators extends CI_Controller
 
         $data = array(
             'id_guru' => $this->input->post('id_guru'),
-            'id_kelas' => $this->input->post('id_kelas')
+            'id_kelas' => $this->input->post('id_kelas'),
+            'id_mapel' => $this->input->post('mapel')
         );
 
         $this->db->insert('kelas_guru', $data);
@@ -293,6 +318,7 @@ class Administrators extends CI_Controller
     {
         $data = array(
             'id_kelas' => $this->input->post("id_kelas"),
+            'id_mapel' => $this->input->post("mapel")
         );
 
         $this->db->where('id_kelas_guru', $this->input->post("id_kelas_guru"));

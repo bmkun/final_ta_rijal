@@ -116,7 +116,7 @@
 
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Kelas Diniah</label>
-                                <select class="form-control" id="recipient-name" name="Kelas_diniah">
+                                <select class="form-control" id="recipient-name" name="id_kelas">
                                     <?php foreach ($list_kelas_diniyah as $kelas2) { ?>
                                         <option value="<?= $kelas2['id_kelas'] ?>"><?= $kelas2['Kelas'] ?></option>
 

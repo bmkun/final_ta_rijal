@@ -45,11 +45,10 @@
                 </ol>
             </nav>
         </div>
-
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-
+                    <h3>Kelas Diniah</h3>
 
 
                     <table class="table table-striped">
@@ -63,13 +62,13 @@
                         </thead>
                         <tbody>
 
-                            <?php foreach ($set_kelas_baru as $siswa_baru) { ?>
+                            <?php foreach ($set_kelas_diniah as $siswa_baru) { ?>
                                 <tr>
                                     <td><?= $siswa_baru['Nama'] ?> </td>
 
                                     <td class="text-center">
                                         <!-- <a href="<?= $siswa_baru['Nama'] ?>" class="btn btn-success">Pilih kelas</a> -->
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update<?= $siswa_baru['id_santri'] ?>">
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#set_diniah<?= $siswa_baru['id_santri'] ?>">
                                             Pilih Kelas
                                         </button>
                                     </td>
@@ -81,6 +80,43 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Kelas Ummi</h3>
+
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Nama</th>
+
+                                <th class="text-center"> Aksi </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php foreach ($set_kelas_ummi as $siswa_baru) { ?>
+                                <tr>
+                                    <td><?= $siswa_baru['Nama'] ?> </td>
+
+                                    <td class="text-center">
+                                        <!-- <a href="<?= $siswa_baru['Nama'] ?>" class="btn btn-success">Pilih kelas</a> -->
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#set_ummi<?= $siswa_baru['id_santri'] ?>">
+                                            Pilih Kelas
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <!-- content-wrapper ends -->
 
@@ -89,19 +125,19 @@
     <!-- Button trigger modal -->
 
 
-    <!-- Modal -->
-    <?php foreach ($set_kelas_baru as $siswa_baru) { ?>
-        <div class="modal fade" id="update<?= $siswa_baru['id_santri'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal diniah -->
+    <?php foreach ($set_kelas_diniah as $siswa_baru) { ?>
+        <div class="modal fade" id="set_diniah<?= $siswa_baru['id_santri'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Atur Kelas Santri Baru</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Atur Kelas Santri Baru Diniah</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="<?= site_url("administrators/action_kelas_santri_baru") ?>">
+                        <form method="POST" action="<?= site_url("administrators/action_kelas_santri_baru_diniah") ?>">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Kelas Diniyah</label>
                                 <!-- <input type="text" class="form-control" id="recipient-name"> -->
@@ -112,16 +148,49 @@
                                 <label for="recipient-name" class="col-form-label">Kelas Diniyah</label>
                                 <!-- <input type="text" class="form-control" id="recipient-name"> -->
 
-                                <select class="form-control" id="recipient-name" name="Kelas_diniah">
+                                <select class="form-control" id="recipient-name" name="id_kelas">
                                     <?php foreach ($list_kelas_diniyah as $kelas) { ?>
                                         <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['Kelas'] ?></option>
 
                                     <?php } ?>
                                 </select>
                             </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+
+    <!-- modal ummi -->
+    <?php foreach ($set_kelas_ummi as $siswa_baru) { ?>
+        <div class="modal fade" id="set_ummi<?= $siswa_baru['id_santri'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Atur Kelas Santri Baru Ummi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="<?= site_url("administrators/action_kelas_santri_baru_ummi") ?>">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Kelas Diniyah</label>
+                                <!-- <input type="text" class="form-control" id="recipient-name"> -->
+                                <input type="hidden" value="<?= $siswa_baru['id_santri'] ?>" name="id_santri">
+                                <input type="text" class="form-control" id="recipient-name" name="Nama_santri" value="<?= $siswa_baru['Nama'] ?>" disabled>
+                            </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Kelas Ummi</label>
-                                <select class="form-control" id="recipient-name" name="Kelas_ummi">
+                                <select class="form-control" id="recipient-name" name="id_kelas">
                                     <?php foreach ($list_kelas_ummi as $kelas2) { ?>
                                         <option value="<?= $kelas2['id_kelas'] ?>"><?= $kelas2['Kelas'] ?></option>
 

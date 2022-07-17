@@ -50,7 +50,7 @@
                                     <td><?= $guru['id_guru'] ?></td>
                                     <td><?= $guru['Nama'] ?></td>
                                     <td><?= $guru['Kelas'] ?></td>
-                                    <td>Fiqih</td>
+                                    <td><?= $guru['nama_mapel'] ?></td>
                                     <td class="text-center">
                                         <button class="btn btn-success" data-toggle="modal" data-target="#edit<?= $guru['id_kelas_guru'] ?>">Edit</button>
                                         <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit<?= $guru['id_kelas_guru'] ?>">
@@ -69,7 +69,7 @@
     <!-- content-wrapper ends -->
 
 
-    <!-- Modal tambah kelas guru-->
+    <!-- Modal1 tambah kelas guru-->
     <div class="modal fade" id="set_kelas_guru" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -83,7 +83,7 @@
                 <div class="modal-body">
                     <form method="POST" action="<?= site_url("administrators/action_kelas_guru/") . $kd_direct ?>">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Kelas Diniyah</label>
+                            <label for="recipient-name" class="col-form-label">Nama Guru</label>
                             <!-- <input type="text" class="form-control" id="recipient-name"> -->
                             <input type="hidden" name="url-param" value="1">
                             <select class="form-control" id="recipient-name" name="id_guru">
@@ -97,10 +97,10 @@
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Matapelajaran</label>
                             <select class="form-control" id="recipient-name" name="mapel">
-                                <option value="1">fiqih</option>
-                                <option value="1">aqidah</option>
-                                <option value="1">ummi1</option>
-                                <option value="1">ummi2</option>
+
+                                <?php foreach ($mapel as $mata_pelajaran) { ?>
+                                    <option value="<?= $mata_pelajaran['id_mapel'] ?>"><?= $mata_pelajaran['nama_mapel'] . '->' . $mata_pelajaran['mapel_kelas'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
 
@@ -125,7 +125,7 @@
     </div>
 
 
-    <!-- modal edit kelas guru  -->
+    <!-- modal2 edit kelas guru  -->
 
     <?php foreach ($list_kelas_guru as $guru) { ?>
         <div class="modal fade" id="edit<?= $guru['id_kelas_guru'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -141,7 +141,7 @@
                     <div class="modal-body">
                         <form method="POST" action="<?= site_url("administrators/update_kelas_guru/") . $guru['kd_kelas'] ?>">
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Kelas Diniyah</label>
+                                <label for="recipient-name" class="col-form-label">Nama Guru</label>
                                 <!-- <input type="text" class="form-control" id="recipient-name"> -->
                                 <input type="hidden" name="id_kelas_guru" value="<?= $guru['id_kelas_guru'] ?>">
 
@@ -153,10 +153,10 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Matapelajaran</label>
                                 <select class="form-control" id="recipient-name" name="mapel">
-                                    <option value="1">fiqih</option>
-                                    <option value="1">aqidah</option>
-                                    <option value="1">ummi1</option>
-                                    <option value="1">ummi2</option>
+
+                                    <?php foreach ($mapel as $mata_pelajaran) { ?>
+                                        <option value="<?= $mata_pelajaran['id_mapel'] ?>"><?= $mata_pelajaran['nama_mapel'] . '->' . $mata_pelajaran['mapel_kelas'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 
