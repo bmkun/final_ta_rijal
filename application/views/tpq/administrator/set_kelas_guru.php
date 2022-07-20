@@ -39,6 +39,7 @@
                                 <th> Nama</th>
                                 <th> Kelas </th>
                                 <th> Pelajaran </th>
+                                <th> Walikelas </th>
                                 <th class="text-center"> Aksi </th>
 
                             </tr>
@@ -51,6 +52,7 @@
                                     <td><?= $guru['Nama'] ?></td>
                                     <td><?= $guru['Kelas'] ?></td>
                                     <td><?= $guru['nama_mapel'] ?></td>
+                                    <td><?= $guru['walikelas'] ?></td>
                                     <td class="text-center">
                                         <button class="btn btn-success" data-toggle="modal" data-target="#edit<?= $guru['id_kelas_guru'] ?>">Edit</button>
                                         <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit<?= $guru['id_kelas_guru'] ?>">
@@ -113,6 +115,16 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Status</label>
+                            <select class="form-control" id="recipient-name" name="status">
+
+                                <option value="Walikelas">Walikelas</option>
+                                <option value="-">Guru pengajar</option>
+
+                            </select>
+                        </div>
+
 
                 </div>
                 <div class="modal-footer">
@@ -166,6 +178,15 @@
                                     <?php foreach ($all_kelas as $kelas) { ?>
                                         <option value="<?= $kelas['id_kelas'] ?>"><?= $kelas['Kelas'] . '->' . $kelas['kd_kelas'] ?></option>
                                     <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Status</label>
+                                <select class="form-control" id="recipient-name" name="walikelas">
+
+                                    <option value="Walikelas">Walikelas</option>
+                                    <option value="-">Guru pengajar</option>
+
                                 </select>
                             </div>
 

@@ -117,6 +117,16 @@ class Administrators extends CI_Controller
 
         $this->load->view("tpq/administrator/raport_ummi");
     }
+
+    function raport_diniah()
+    {
+        $data['sidebar_role'] = "administrator";
+        $data['tittle'] = "raport ummi";
+
+
+
+        $this->load->view("tpq/administrator/raport_diniah");
+    }
     function kelas_diniah($kelas = '1')
     {
 
@@ -302,7 +312,8 @@ class Administrators extends CI_Controller
         $data = array(
             'id_guru' => $this->input->post('id_guru'),
             'id_kelas' => $this->input->post('id_kelas'),
-            'id_mapel' => $this->input->post('mapel')
+            'id_mapel' => $this->input->post('mapel'),
+            'walikelas' => $this->input->post('status')
         );
 
         $this->db->insert('kelas_guru', $data);
@@ -318,7 +329,8 @@ class Administrators extends CI_Controller
     {
         $data = array(
             'id_kelas' => $this->input->post("id_kelas"),
-            'id_mapel' => $this->input->post("mapel")
+            'id_mapel' => $this->input->post("mapel"),
+            'walikelas' => $this->input->post("walikelas")
         );
 
         $this->db->where('id_kelas_guru', $this->input->post("id_kelas_guru"));

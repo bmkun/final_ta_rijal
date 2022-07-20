@@ -109,8 +109,8 @@
                          </a>
                          <div class="collapse" id="ui-basic1">
                              <ul class="nav flex-column sub-menu">
-                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Nilai Ummi</a></li>
-                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Nilai Diniah</a></li>
+                                 <li class="nav-item"> <a class="nav-link" href="<?= site_url("guru_access/nilai_ummi") ?>">Nilai Ummi</a></li>
+                                 <li class="nav-item"> <a class="nav-link" href="<?= site_url("guru_access/nilai_diniah") ?>">Nilai Diniah</a></li>
 
                              </ul>
                          </div>

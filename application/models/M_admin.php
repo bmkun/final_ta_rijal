@@ -127,7 +127,7 @@ class M_admin extends CI_Model
         // query belum dicoba
 
         $query = $this->db->query("
-        SELECT id_kelas_guru,guru.id_guru,kd_kelas,Nama,Kelas,nama_mapel,status_guru FROM kelas_guru INNER JOIN mapel ON kelas_guru.`id_mapel`= mapel.`id_mapel`
+        SELECT id_kelas_guru,guru.id_guru,kd_kelas,Nama,Kelas,nama_mapel,walikelas FROM kelas_guru INNER JOIN mapel ON kelas_guru.`id_mapel`= mapel.`id_mapel`
         INNER JOIN guru ON kelas_guru.`id_guru` = guru.`id_guru`
         INNER JOIN kelas ON kelas_guru.`id_kelas` = kelas.`id_kelas` 
          WHERE kelas.`kd_kelas` ='$kd_kelas' AND Status_guru='aktif'
