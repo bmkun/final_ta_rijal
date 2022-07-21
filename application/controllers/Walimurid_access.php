@@ -43,4 +43,15 @@ class Walimurid_access extends CI_Controller
         $this->m_walimurid->insert_data('santri', $data);
         redirect('walimurid_access/biodata_santri');
     }
+    function nilai_ummi_santri()
+    {
+        $data['sidebar_role'] = "wali";
+        $data['tittle'] = "Nilai Ummi";
+        $data['status_biodata'] = $this->m_walimurid->biodata_check();
+        $data['show_biodata'] = $this->m_walimurid->biodata_show();
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/walimurid/nilai_ummi", $data);
+        $this->load->view("tpq/footer");
+    }
 }

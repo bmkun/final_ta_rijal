@@ -136,4 +136,15 @@ class Guru_access extends CI_Controller
     function multi_insert_act()
     {
     }
+
+    function raport_ummi()
+    {
+
+        $this->load->view("tpq/guru/raport_ummi");
+    }
+    function raport_diniah()
+    {
+
+        $this->load->view("tpq/guru/raport_diniah");
+    }
 }
