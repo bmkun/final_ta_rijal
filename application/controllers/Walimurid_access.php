@@ -8,6 +8,13 @@ class Walimurid_access extends CI_Controller
         parent::__construct();
         // $this->load->library('encryption');
         $this->load->model('m_walimurid');
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        } elseif ($this->ion_auth->in_group(6)) {
+            redirect('guru_access/biodata_guru', 'refresh');
+        } elseif ($this->ion_auth->in_group(4)) {
+            redirect('administrators/data_santri', 'refresh');
+        }
     }
 
     function biodata_santri()

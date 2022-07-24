@@ -13,8 +13,8 @@
             <h3 class="page-title"> Input Nilai Ummi </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                    <li class="breadcrumb-item"><a href="#">Input Nilai</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Nilai Ummi</li>
                 </ol>
             </nav>
         </div>

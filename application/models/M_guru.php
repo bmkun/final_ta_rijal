@@ -74,16 +74,22 @@ class M_guru extends CI_Model
         SELECT santri.`id_santri`, santri.`Nama`,kelas.`Kelas`as Kelas,kelas_santri_diniah.id_kelas_diniah FROM santri INNER JOIN 
             kelas_santri_diniah ON santri.`id_santri`= kelas_santri_diniah.`id_santri` 
             INNER JOIN kelas ON kelas_santri_diniah.`id_kelas` = kelas.`id_kelas`
-            WHERE kelas_santri_diniah.id_kelas =1 AND santri.`Verification` ='Y'")->result_array();
+            WHERE kelas_santri_diniah.id_kelas =$kelas AND santri.`Verification` ='Y'")->result_array();
         return $kelas_santri;
     }
 
-    // menampilkan input nilai diniah berdasarkan kelas yang diajar
-    function show_mapel($kd_kelas)
+    // menampilkan input nilai mapel diniah berdasarkan kelas yang diajar
+    function show_mapel($id_kelas, $id_guru)
     {
+        $id_mapel = $this->db->query(
+            "
+            SELECT * FROM kelas_guru WHERE id_guru=$id_guru AND id_kelas=$id_kelas
+            "
+        )->row_array();
+        $id_mapel = $id_mapel['id_mapel'];
+        // print_r($id_mapel);
         $query = $this->db->query("
-        SELECT * FROM detail_mapel INNER JOIN mapel ON detail_mapel.`id_mapel`=mapel.`id_mapel`
-WHERE kd_kelas =1 AND detail_mapel.id_mapel=1
+        SELECT * FROM detail_mapel WHERE id_kelas=$id_kelas AND id_mapel=$id_mapel
         ")->row_array();
 
         return $query;
@@ -100,14 +106,22 @@ WHERE kd_kelas =1 AND detail_mapel.id_mapel=1
         }
     }
 
-    function nilai_santri($id_guru, $semester)
+    function nilai_santri($id_guru, $semester, $id_kelas)
     {
         $tahun = date("Y");
         $nilai_santri = $this->db->query("
         SELECT * FROM nilai_diniah INNER JOIN santri ON nilai_diniah.`id_santri` = santri.`id_santri`
-INNER JOIN detail_mapel ON nilai_diniah.`id_detail_mapel` = detail_mapel.`kd_detail_mapel` WHERE semester ='$semester' AND tgl_inp_nilai=2022 AND id_guru =$id_guru 
+INNER JOIN detail_mapel ON nilai_diniah.`id_detail_mapel` = detail_mapel.`kd_detail_mapel` WHERE semester ='$semester' AND tgl_inp_nilai=$tahun AND id_guru =$id_guru and nilai_diniah.`id_kelas`=$id_kelas
         ")->result_array();
 
         return $nilai_santri;
+    }
+
+    function show_kelas_diniah($kelas1, $kelas2)
+    {
+        $kelas  = $this->db->query("
+        SELECT * FROM kelas WHERE id_kelas =$kelas1 OR id_kelas = $kelas2;
+        ")->result_array();
+        return [$kelas[0]['Kelas'], $kelas[1]['Kelas']];
     }
 }

@@ -130,14 +130,16 @@ class Main extends CI_Controller
     {
         if (!$this->ion_auth->logged_in()) {
             redirect('auth/login', 'refresh');
-        } elseif ($this->ion_auth->in_group(4)) {
-            redirect('administrators/data_santri', 'refresh');
-        } elseif ($this->ion_auth->in_group(6)) {
-            redirect('guru_access/biodata_guru', 'refresh');
-        } elseif ($this->ion_auth->in_group(3)) {
-            redirect('walimurid_access/biodata_santri', 'refresh');
-        } elseif ($this->ion_auth->in_group(1)) {
-            redirect(base_url(), 'refresh');
+        } else {
+            if ($this->ion_auth->in_group(4)) {
+                redirect('administrators/data_santri', 'refresh');
+            } elseif ($this->ion_auth->in_group(6)) {
+                redirect('guru_access/biodata_guru', 'refresh');
+            } elseif ($this->ion_auth->in_group(3)) {
+                redirect('walimurid_access/biodata_santri', 'refresh');
+            } elseif ($this->ion_auth->in_group(1)) {
+                redirect(base_url(), 'refresh');
+            }
         }
     }
 

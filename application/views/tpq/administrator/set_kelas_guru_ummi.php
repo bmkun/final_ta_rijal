@@ -20,8 +20,8 @@
             <!-- pilih kelas -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Kelas</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $tittle ?></li>
+                    <li class="breadcrumb-item"><a href="#">Atur Kelas</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kelas Guru Ummi</li>
                 </ol>
             </nav>
         </div>
@@ -38,7 +38,7 @@
                                 <th>ID Guru</th>
                                 <th> Nama</th>
                                 <th> Kelas </th>
-                                <th> Pelajaran </th>
+                                <!-- <th> Pelajaran </th> -->
                                 <th> Walikelas </th>
                                 <th class="text-center"> Aksi </th>
 
@@ -51,7 +51,7 @@
                                     <td><?= $guru['id_guru'] ?></td>
                                     <td><?= $guru['Nama'] ?></td>
                                     <td><?= $guru['Kelas'] ?></td>
-                                    <td><?= $guru['nama_mapel'] ?></td>
+                                    <!-- <td><?= $guru['nama_mapel'] ?></td> -->
                                     <td><?= $guru['walikelas'] ?></td>
                                     <td class="text-center">
                                         <button class="btn btn-success" data-toggle="modal" data-target="#edit<?= $guru['id_kelas_guru'] ?>">Edit</button>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form method="POST" action="<?= site_url("administrators/action_kelas_guru/") . $kd_direct ?>">
+                    <form method="POST" action="<?= site_url("administrators/action_kelas_guru_ummi/") . $kd_direct ?>">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Guru</label>
                             <!-- <input type="text" class="form-control" id="recipient-name"> -->
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form method="POST" action="<?= site_url("administrators/update_kelas_guru/") . $guru['kd_kelas'] ?>">
+                        <form method="POST" action="<?= site_url("administrators/update_kelas_guru_ummi/") ?>">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Nama Guru</label>
                                 <!-- <input type="text" class="form-control" id="recipient-name"> -->

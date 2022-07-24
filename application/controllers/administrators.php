@@ -9,6 +9,13 @@ class Administrators extends CI_Controller
         $this->load->library('encryption');
         $this->load->model("m_admin");
         $this->load->helper('cookie');
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        } elseif ($this->ion_auth->in_group(3)) {
+            redirect('walimuri_access/biodata_santri', 'refresh');
+        } elseif ($this->ion_auth->in_group(6)) {
+            redirect('guru_access/biodata_guru', 'refresh');
+        }
     }
     // function index()
     // {
@@ -272,7 +279,7 @@ class Administrators extends CI_Controller
         $data['tittle'] = "Data Kelas Guru Diniah";
         $this->load->view("tpq/header", $data);
         $this->load->view("tpq/sidebar_role", $data);
-        $this->load->view("tpq/administrator/set_kelas_guru", $data);
+        $this->load->view("tpq/administrator/set_kelas_guru_diniah", $data);
         $this->load->view("tpq/footer");
     }
 
@@ -302,11 +309,11 @@ class Administrators extends CI_Controller
         $data['tittle'] = "Data Kelas Guru Ummi";
         $this->load->view("tpq/header", $data);
         $this->load->view("tpq/sidebar_role", $data);
-        $this->load->view("tpq/administrator/set_kelas_guru", $data);
+        $this->load->view("tpq/administrator/set_kelas_guru_ummi", $data);
         $this->load->view("tpq/footer");
     }
     // tambah kelas guru
-    function action_kelas_guru($kd_direct)
+    function action_kelas_guru_ummi($kd_direct)
     {
 
         $data = array(
@@ -324,8 +331,23 @@ class Administrators extends CI_Controller
             redirect("administrators/kelas_guru_diniah");
         }
     }
+    function action_kelas_guru_diniah($kd_direct)
+    {
 
-    function update_kelas_guru($kd_kelas)
+        $data = array(
+            'id_guru' => $this->input->post('id_guru'),
+            'id_kelas' => $this->input->post('id_kelas'),
+            'id_mapel' => $this->input->post('mapel'),
+
+        );
+
+        $this->db->insert('kelas_guru', $data);
+
+
+        redirect("administrators/kelas_guru_diniah");
+    }
+
+    function update_kelas_guru_ummi()
     {
         $data = array(
             'id_kelas' => $this->input->post("id_kelas"),
@@ -337,10 +359,22 @@ class Administrators extends CI_Controller
         $this->db->update('kelas_guru', $data);
 
         // redirect berdasarkan param get $kd_kelas
-        if ($kd_kelas == 'ummi') {
-            redirect("administrators/kelas_guru_ummi");
-        } else {
-            redirect("administrators/kelas_guru_diniah");
-        }
+
+        redirect("administrators/kelas_guru_ummi");
+    }
+    function update_kelas_guru_diniah()
+    {
+        $data = array(
+            'id_kelas' => $this->input->post("id_kelas"),
+            'id_mapel' => $this->input->post("mapel"),
+
+        );
+
+        $this->db->where('id_kelas_guru', $this->input->post("id_kelas_guru"));
+        $this->db->update('kelas_guru', $data);
+
+        // redirect berdasarkan param get $kd_kelas
+
+        redirect("administrators/kelas_guru_diniah");
     }
 }

@@ -6,8 +6,8 @@
             <h3 class="page-title"> Verifikasi Data Santri </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                    <li class="breadcrumb-item"><a href="#">Verifikasi Biodata</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Santri</li>
                 </ol>
             </nav>
         </div>

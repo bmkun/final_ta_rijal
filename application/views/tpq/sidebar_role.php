@@ -94,7 +94,7 @@
              <!-- partial:partials/_sidebar.html -->
              <nav class="sidebar sidebar-offcanvas" id="sidebar">
                  <ul class="nav">
-                     <li class="nav-item nav-category">Administrator</li>
+                     <li class="nav-item nav-category">Guru</li>
                      <li class="nav-item">
                          <a class="nav-link" href="<?= site_url("guru_access/biodata_guru") ?>">
                              <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
