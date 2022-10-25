@@ -45,13 +45,18 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1"><?= $mapel['detail_mapel'] ?></label>
+                            <input type="text" class="form-control" name="nilai">
                             <input type="hidden" value="<?= $kelas_santri['id_kelas'] ?>" name='id_kelas'>
                             <!-- <input type="hidden" value="<?= $tahun ?>" name='tahun'> -->
                             <input type="hidden" value="<?= $tahun ?>" name='tahun'>
                             <input type="hidden" value="<?= $id_guru ?>" name='id_guru'>
                             <input type="hidden" value="<?= $semester ?>" name='semester'>
                             <input type="hidden" value="<?= $mapel['kd_detail_mapel'] ?>" name='id_detail_mapel'>
-                            <input type="text" class="form-control" name="nilai">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Catatan Ustadz</label>
+                            <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> 
                         </div>
 
                         <button type="submit" class="btn btn-primary mr-2">Simpan</button>
@@ -130,6 +135,12 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Nilai Santri</label>
                                 <input class="form-control" type="text" value="<?= $edit_nilai['nilai'] ?>" name="nilai">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Catatan Ustadz</label>
+                                <textarea name="catatan" class="form-control" id="exampleFormControlTextarea1" rows="5">
+<?= $edit_nilai['catatan'] ?>
+</textarea> 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>

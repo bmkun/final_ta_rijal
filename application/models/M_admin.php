@@ -9,7 +9,6 @@ class M_admin extends CI_Model
         $query = $this->db->query(" select * from $table where Verification = 'Y'; ")->result_array();
         return $query;
     }
-
     function show_verified($table)
     {
         // tampilkan seluruh santri yang belum diverifikasi
@@ -111,9 +110,9 @@ class M_admin extends CI_Model
         } else if ($kelas == "kelas_santri_ummi") {
             $query = $this->db->query("
             SELECT santri.`id_santri`, santri.`Nama`,kelas.`Kelas` as Kelas FROM santri INNER JOIN 
-        kelas_santri_ummi ON santri.`id_santri`= kelas_santri_ummi.`id_santri` 
-        INNER JOIN kelas ON kelas_santri_ummi.`id_kelas` = kelas.`id_kelas`
-        WHERE kelas_santri_ummi.`id_kelas` = $id_kelas AND santri.`Verification` ='Y'
+            kelas_santri_ummi ON santri.`id_santri`= kelas_santri_ummi.`id_santri` 
+            INNER JOIN kelas ON kelas_santri_ummi.`id_kelas` = kelas.`id_kelas`
+            WHERE kelas_santri_ummi.`id_kelas` = $id_kelas AND santri.`Verification` ='Y'
             ")->result_array();
             return $query;
         }
@@ -148,5 +147,206 @@ class M_admin extends CI_Model
     {
         return $this->db->query("
         SELECT * FROM mapel WHERE mapel_kelas = '$kd_mapel'")->result_array();
+    }
+    function raport_ummi($kd_mapel)
+    {
+        $id_santri =  $this->db->query(
+            "
+        SELECT DISTINCT id_santri FROM nilai_diniah WHERE semester='genab' and `tgl_inp_nilai`='2022'"
+        );
+        $data_santri = "SELECT * FROM nilai_diniah INNER JOIN santri on nilai_diniah.id_santri = santri.id_santri";
+    }
+
+    function raport_diniah($kd_mapel)
+    {
+        $id_santri =  $this->db->query(
+            "
+        SELECT DISTINCT id_santri FROM nilai_diniah WHERE semester='genab' and `tgl_inp_nilai`='2022'"
+        );
+        $data_santri = "SELECT * FROM nilai_diniah INNER JOIN santri on nilai_diniah.id_santri = santri.id_santri";
+    }
+    // option pilih kelas 
+    function printSelect($kdKelas)
+    {
+        $kelas = $this->db->query("
+        select * from kelas where kd_kelas = '$kdKelas'
+        ")->result_array();
+
+        return $kelas;
+    }
+    // generate tahun raport dibuat
+    function raportTahun()
+    {
+        $raportTahun = $this->db->query(
+            "
+            select distinct(tgl_inp_nilai) from nilai_diniah
+            "
+        )->result_array();
+
+        return $raportTahun;
+    }
+    // menampilkan walikelas pada murid
+    function findWalikelas($idSantri)
+    {
+
+        $idKelas = $this->db->query(
+            "select id_kelas from kelas_santri_ummi ksu where id_santri = $idSantri;"
+        )->row_array();
+
+        $idKelas = $idKelas['id_kelas'];
+
+        // print_r($idKelas);
+
+        try {
+            $walikelas = $this->db->query(
+                "
+        select Nama namaGuru from kelas_guru kg
+        inner join guru g  on kg.id_guru = g.id_guru 
+        inner join kelas k on kg.id_kelas = k.id_kelas 
+        where walikelas='walikelas' and k.id_kelas = $idKelas
+            "
+            )->row_array();
+            return $walikelas;
+        } catch (Exception $e) {
+            // echo $e;
+            return 'noData';
+        }
+    }
+    // Menampilkan nama ketu tpq pada raport 
+    function ketuaTpq()
+    {
+        $ketua = $this->db->query("
+        select nama_ketua from ketua_tpq kt where status = 'ketua' 
+        ")->row_array();
+        return $ketua;
+    }
+    // $tahun = date("Y");
+    //     $semester = M_guru::semester();
+
+
+    function semester()
+    {
+        $tanggal = date('m');
+        if ($tanggal <= 6) {
+            return "Ganjil";
+        } else {
+            return "Genab";
+        }
+    }
+
+    function totalSantriDiniah()
+    {
+        $semester = $this->semester();
+        $tahun = date("Y");
+
+        $idSantri = $this->db->query(
+            "
+            select distinct id_santri from nilai_diniah nd where semester = '$semester' and tgl_inp_nilai= '$tahun';
+            "
+        )->result_array();
+
+        $idSantriCount = count($idSantri) - 1;
+
+        return $idSantriCount;
+    }
+
+    function totalSantriUmmi()
+    {
+        $semester = $this->semester();
+        $tahun = date("Y");
+
+        $idSantri = $this->db->query(
+            "
+            select distinct id_santri from nilai_ummi where semester = '$semester' and tahun= '$tahun';
+            "
+        )->result_array();
+
+        $idSantriCount = count($idSantri) - 1;
+
+        return $idSantriCount;
+    }
+
+    function mprintRaportDiniah($idKelas)
+    {
+
+
+
+        $semester = $this->semester();
+        $tahun = date("Y");
+
+        $idSantri = $this->db->query(
+            "
+            select distinct id_santri from nilai_diniah nd where semester = '$semester' and tgl_inp_nilai= '$tahun';
+            "
+        )->result_array();
+
+        $idSantriCount = count($idSantri) - 1;
+        // print_r($idSantri);
+
+
+        for ($arrayCount = 0; $arrayCount <= $idSantriCount; $arrayCount++) {
+
+
+            $loopIdSantri = $idSantri[$arrayCount]['id_santri'];
+
+            $waliKelas[] = $this->findWalikelas($loopIdSantri);
+
+            $dataSantri[] = $this->db->query("
+            SELECT * FROM kelas_santri_diniah 
+INNER JOIN kelas ON kelas_santri_diniah.`id_kelas` = kelas.`id_kelas`
+INNER JOIN santri ON kelas_santri_diniah.`id_santri` = santri.`id_santri`
+WHERE santri.id_santri =$loopIdSantri
+            ")->row_array();
+
+            $nilaiRaport[] = $this->db->query(
+                "
+                SELECT nilai,detail_mapel, santri.id_santri,catatan FROM nilai_diniah INNER JOIN santri ON nilai_diniah.`id_santri` = santri.`id_santri`
+    INNER JOIN detail_mapel ON nilai_diniah.`id_detail_mapel` = detail_mapel.`kd_detail_mapel` 
+    WHERE semester ='$semester' AND tgl_inp_nilai=$tahun AND  nilai_diniah.`id_kelas`=$idKelas and santri.id_santri =$loopIdSantri order by detail_mapel
+                "
+            )->result_array();
+        }
+        // print_r($nilaiRaport);
+        return ["dataSantri" => $dataSantri, "nilaiSantri" => $nilaiRaport, "waliKelas" => $waliKelas];
+    }
+
+    function mprintRaportUmmi($idKelas)
+    {
+
+
+        $semester = $this->semester();
+
+
+        $tahun = date("Y");
+        $idSantri = $this->db->query(
+            "
+        SELECT DISTINCT id_santri FROM nilai_ummi WHERE semester = '$semester' AND tahun= '$tahun';
+        "
+        )->result_array();
+
+        $idSantriCount = count($idSantri) - 1;
+
+
+
+        for ($arrayCount = 0; $arrayCount <= $idSantriCount; $arrayCount++) {
+
+
+            $loopIdSantri = $idSantri[$arrayCount]['id_santri'];
+            $waliKelas[] = $this->findWalikelas($loopIdSantri);
+            $dataSantri[] = $this->db->query("
+            SELECT * FROM kelas_santri_ummi 
+            INNER JOIN santri ON kelas_santri_ummi.`id_santri` = santri.`id_santri`
+            INNER JOIN kelas ON kelas_santri_ummi.`id_kelas` = kelas.`id_kelas`
+            WHERE santri.id_santri=$loopIdSantri
+            ")->row_array();
+
+            $nilaiRaport[] = $this->db->query(
+
+                "
+            SELECT * FROM nilai_ummi WHERE semester = '$semester' AND tahun= '$tahun' AND id_kelas= $idKelas;
+            "
+            )->result_array();
+        }
+        return ["dataSantri" => $dataSantri, "nilaiSantri" => $nilaiRaport, "waliKelas" => $waliKelas];
     }
 }

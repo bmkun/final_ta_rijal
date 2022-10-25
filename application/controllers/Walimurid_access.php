@@ -52,6 +52,7 @@ class Walimurid_access extends CI_Controller
     }
     function nilai_ummi_santri()
     {
+        $data["nilaiUmmi"] = $this->m_walimurid->nilaiUmmi();
         $data['sidebar_role'] = "wali";
         $data['tittle'] = "Nilai Ummi";
         $data['status_biodata'] = $this->m_walimurid->biodata_check();
@@ -59,6 +60,20 @@ class Walimurid_access extends CI_Controller
         $this->load->view("tpq/header", $data);
         $this->load->view("tpq/sidebar_role", $data);
         $this->load->view("tpq/walimurid/nilai_ummi", $data);
+        $this->load->view("tpq/footer");
+    }
+    function nilai_diniah_santri()
+    {
+
+        $data["nilaiDiniah"] = $this->m_walimurid->nilaiDiniah();
+        
+        $data['sidebar_role'] = "wali";
+        $data['tittle'] = "Nilai Diniah";
+        $data['status_biodata'] = $this->m_walimurid->biodata_check();
+        $data['show_biodata'] = $this->m_walimurid->biodata_show();
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/walimurid/nilai_diniah", $data);
         $this->load->view("tpq/footer");
     }
 }

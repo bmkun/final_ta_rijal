@@ -48,7 +48,7 @@
                          </ul>
                      </div>
                  </li>
-                 <!-- <li class="nav-item">
+                 <li class="nav-item">
                      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                          <span class="icon-bg"><i class="mdi mdi-printer menu-icon"></i></span>
                          <span class="menu-title">Cetak Raport</span>
@@ -56,12 +56,12 @@
                      </a>
                      <div class="collapse" id="ui-basic">
                          <ul class="nav flex-column sub-menu">
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Raport ummi</a></li>
-                             <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Raport diniah</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/raportDiniah") ?>">Raport Diniah</a></li>
+                             <li class="nav-item"> <a class="nav-link" href="<?= site_url("administrators/raportUmmi") ?>">Raport Ummi</a></li>
 
                          </ul>
                      </div>
-                 </li> -->
+                 </li>
                  <li class="nav-item">
                      <a class="nav-link" data-toggle="collapse" href="#ui-basic12" aria-expanded="false" aria-controls="ui-basic">
                          <span class="icon-bg"><i class="mdi mdi-home menu-icon"></i></span>
@@ -115,7 +115,7 @@
                              </ul>
                          </div>
                      </li>
-                     <li class="nav-item">
+                     <!-- <li class="nav-item">
                          <a class="nav-link" data-toggle="collapse" href="#ui-raport" aria-expanded="false" aria-controls="ui-basic">
                              <span class="icon-bg"><i class="mdi mdi-printer menu-icon"></i></span>
                              <span class="menu-title">Cetak Raport</span>
@@ -125,10 +125,9 @@
                              <ul class="nav flex-column sub-menu">
                                  <li class="nav-item"> <a class="nav-link" target="blank" href="<?= site_url("guru_access/raport_ummi") ?>">Raport Ummi</a></li>
                                  <li class="nav-item"> <a class="nav-link" target="blank" href="<?= site_url("guru_access/raport_diniah") ?>">Raport Diniah</a></li>
-
                              </ul>
                          </div>
-                     </li>
+                     </li> -->
 
                  </ul>
              </nav>
@@ -155,7 +154,7 @@
                              <div class="collapse" id="ui-raport">
                                  <ul class="nav flex-column sub-menu">
                                      <li class="nav-item"> <a class="nav-link" href="<?= site_url("walimurid_access/nilai_ummi_santri") ?>">Ummi</a></li>
-                                     <li class="nav-item"> <a class="nav-link" href="<?= site_url("walimurid_access/nilai_ummi_santri") ?>">Diniah</a></li>
+                                     <li class="nav-item"> <a class="nav-link" href="<?= site_url("walimurid_access/nilai_diniah_santri") ?>">Diniah</a></li>
 
                                  </ul>
                              </div>

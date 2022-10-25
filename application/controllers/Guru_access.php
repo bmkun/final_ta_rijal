@@ -58,18 +58,17 @@ class Guru_access extends CI_Controller
     }
     function nilai_ummi()
     {
+        $kelasGuru = $this->m_guru->kelas_guru('ummi');
+        $data['kelasGurUmmi'] = $kelasGuru;
+        $data['santri_ummi'] = $this->m_guru->santriUmmi($kelasGuru);
+        // print_r($kelasGuru);
 
-        $data['kelas_guru_ummi'] = $this->m_guru->kelas_guru('diniah');
-        print_r($data['kelas_guru_ummi'][0]['id_kelas']);
-        print_r($data['kelas_guru_ummi'][1]['id_kelas']);
-        //  $data['kelas_guru_ummi'][0];
-
-        // $data['sidebar_role'] = "guru";
-        // $data['tittle'] = "Biodata Guru";
-        // $this->load->view("tpq/header", $data);
-        // $this->load->view("tpq/sidebar_role", $data);
-        // $this->load->view("tpq/guru/input_nilai_ummi", $data);
-        // $this->load->view("tpq/footer");
+        $data['sidebar_role'] = "guru";
+        $data['tittle'] = "Nilai Ummi";
+        $this->load->view("tpq/header", $data);
+        $this->load->view("tpq/sidebar_role", $data);
+        $this->load->view("tpq/guru/input_nilai_ummi", $data);
+        $this->load->view("tpq/footer");
     }
     function nilai_diniah()
     {
@@ -87,16 +86,17 @@ class Guru_access extends CI_Controller
         $data['daftar_kelas'] = $this->m_guru->show_kelas_diniah($kelas1, $kelas2); //dua kelas diniah yang diajar oleh guru
 
 
-        $data['santri'] = $this->m_guru->santri_diniah($kelas2); //tampilkan seluruh data santri diniah berdasarkan kelas yan diaja guru
+        $data['santri'] = $this->m_guru->santri_diniah($kelas1); //tampilkan seluruh data santri diniah berdasarkan kelas yan diaja guru
         $semester = $this->m_guru->semester();
         $data['semester'] = $semester; //menampilkan semester berapa sekarang 
-        $mapel = $this->m_guru->show_mapel($kelas2, $id_guru);
+        $mapel = $this->m_guru->show_mapel($kelas1, $id_guru);
         // print_r($mapel);
         $data['mapel'] = $mapel; //menampilkan id mapel
         $data['tahun'] = date("Y");
-        $data['kelas_santri'] = $this->m_guru->kelas($id_guru, $kelas2);
+        $data['kelas_santri'] = $this->m_guru->kelas($id_guru, $kelas1);
 
-        $data['nilai_santri'] = $this->m_guru->nilai_santri($id_guru, $semester, $kelas2);
+        $data['nilai_santri'] = $this->m_guru->nilai_santri($id_guru, $semester, $kelas1);
+        // print_r($data['nilai_santri']);
         // print_r($data['kelas_santri']);
         $data['sidebar_role'] = "guru";
         $data['tittle'] = "Nilai Diniah";
@@ -119,18 +119,18 @@ class Guru_access extends CI_Controller
 
 
         $data['daftar_kelas'] = $this->m_guru->show_kelas_diniah($kelas1, $kelas2); //dua kelas diniah yang diajar oleh guru
+        // print_r($data['daftar_kelas']);
 
-
-        $data['santri'] = $this->m_guru->santri_diniah($kelas1); //tampilkan seluruh data santri diniah berdasarkan kelas yan diaja guru
+        $data['santri'] = $this->m_guru->santri_diniah($kelas2); //tampilkan seluruh data santri diniah berdasarkan kelas yan diaja guru
         $semester = $this->m_guru->semester();
         $data['semester'] = $semester; //menampilkan semester berapa sekarang 
-        $mapel = $this->m_guru->show_mapel($kelas1, $id_guru);
+        $mapel = $this->m_guru->show_mapel($kelas2, $id_guru);
         $data['mapel'] = $mapel; //menampilkan id mapel
         // print_r($mapel);
         $data['tahun'] = date("Y");
         $data['kelas_santri'] = $this->m_guru->kelas($id_guru, $kelas1);
 
-        $data['nilai_santri'] = $this->m_guru->nilai_santri($id_guru, $semester, $kelas1);
+        $data['nilai_santri'] = $this->m_guru->nilai_santri($id_guru, $semester, $kelas2);
         // print_r($data['kelas_santri']);
         $data['sidebar_role'] = "guru";
         $data['tittle'] = "Nilai Diniah";
@@ -141,36 +141,108 @@ class Guru_access extends CI_Controller
     }
     function act_nilai_diniah()
     {
-
-
+        $idSantri = $this->input->post('id_santri');
+        $idGuru = $this->input->post('id_guru');
+        $tahun = date("Y");
+        $semester = $this->m_guru->semester();
         $data = [
-            'id_santri' => $this->input->post('id_santri'),
+            'id_santri' => $idSantri,
             'id_kelas' => $this->input->post('id_kelas'),
-            'id_guru' => $this->input->post('id_guru'),
+            'id_guru' => $idGuru,
             'id_detail_mapel' => $this->input->post('id_detail_mapel'),
             'nilai' => $this->input->post('nilai'),
             'tgl_inp_nilai' => $this->input->post('tahun'),
             'semester' => $this->input->post('semester'),
             'id_kelas_diniah' => $this->input->post('id_kelas'),
+            'catatan' => $this->input->post('catatan')
         ];
+
+        // print_r($data);
 
         $this->db->insert('nilai_diniah', $data);
 
-        $this->session->set_flashdata('notiv', "
-        <div class='alert alert-success' role='alert'>
-        Data berhasil di inputkan :)
-      </div>
-        ");
         redirect("guru_access/nilai_diniah");
+
+
+        // validasi inputan disini
+        // $inpValidation = $this->db->query("
+        // select count(id_santri) from nilai_diniah where id_santri =$idSantri and id_guru =$idGuru and semester = '$semester' and tgl_inp_nilai= '$tahun'
+        // ")->row_array();
+
+        // if ($inpValidation !== 0) {
+        //     echo "data tidak ditemukan";
+        //     $this->db->insert('nilai_diniah', $data);
+
+        //     $this->session->set_flashdata('notiv', "
+        //     <div class='alert alert-success' role='alert'>
+        //     Data berhasil di inputkan :)
+        //   </div>
+        //     ");
+        //     redirect("guru_access/nilai_diniah");
+        // } else {
+
+        //     echo "data ditemukan";
+        //     $this->session->set_flashdata('notiv', "
+        //     <div class='alert alert-danger' role='alert'>
+        //     Nilai Sudah Ada !!!
+        //   </div>
+        //     ");
+        //     redirect("guru_access/nilai_diniah");
+        // }
+
+        // print_r($data);
+        // $this->M_guru->inputNilaiDiniah($data);
+
+
+
     }
 
-    function multi_insert()
+    function act_nilai_ummi()
     {
-        $this->load->view("form");
+        
+        $idGuru = $this->m_guru->id_guru();
+        $tahun = date("Y");
+        $semester = $this->m_guru->semester();
+        $data = [
+            "id_santri"=>$this->input->post('id_santri'),
+            "nilai_ummi"=>$this->input->post('nilai_ummi'),
+            "ummi"=>$this->input->post('ummi'),
+            "catatan_ummi"=>$this->input->post('catatan_ummi'),
+            "nilai_doa1"=>$this->input->post('nilai_doa1'),
+            "doa1"=>$this->input->post('doa1'),
+            "nilai_doa2"=>$this->input->post('nilai_doa2'),
+            "doa2"=> $this->input->post('doa2'),
+            "nilai_doa3"=>$this->input->post('nilai_doa3'),
+            "doa3"=>$this->input->post('doa3'),
+            "catatan_doa"=>$this->input->post('catatan_doa'),
+            "nilai_surat1"=>$this->input->post('nilai_surat1'),
+            "surat1"=>$this->input->post('surat1'),
+            "nilai_surat2"=>$this->input->post('nilai_surat2'),
+            "surat2"=>$this->input->post('surat2'),
+            "nilai_surat3"=>$this->input->post('nilai_surat3'),
+            "surat3"=>$this->input->post('surat3'),
+            "catatan_surat"=>$this->input->post('catatan_surat'),
+            "tahun" => $tahun,
+            "semester" => $semester,
+            "id_guru"=>$idGuru,
+            "id_kelas" =>$this->input->post('id_kelas')
+        ];
+
+        // print_r($data);
+
+        $this->db->insert('nilai_ummi', $data);
+
+        redirect("guru_access/nilai_ummi");
+
     }
-    function multi_insert_act()
-    {
-    }
+
+    // function multi_insert()
+    // {
+    //     $this->load->view("form");
+    // }
+    // function multi_insert_act()
+    // {
+    // }
 
     function raport_ummi()
     {
@@ -196,5 +268,24 @@ class Guru_access extends CI_Controller
       </div>
         ");
         redirect("guru_access/nilai_diniah");
+    }
+
+    // function tesCetak()
+    // {
+    //     $this->load->model("M_guru");
+
+    //     $data['testNilai'] = $this->m_guru->testNilai();
+
+    //     print_r($data);
+
+    //     // $data['dataSantri'] = ['Nama' => "umar", 'umur' => 13, 'alamat' => 'karang doro'];
+
+    // }
+
+    function testGradeNilai()
+    {
+        $grade = $this->m_guru->gradeNilaiDiniah(95);
+
+        echo $grade;
     }
 }

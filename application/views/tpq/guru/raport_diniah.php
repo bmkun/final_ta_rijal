@@ -258,7 +258,7 @@
                 <br>
                 <br>
                 <br>
-                <h5>Ketua TPQ AsySyifa'</h5>
+                <h5><?= $ketua ?></h5>
             </div>
         </div>
     </div>

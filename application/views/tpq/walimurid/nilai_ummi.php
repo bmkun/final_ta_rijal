@@ -65,7 +65,7 @@
 
             <div class="page-header">
 
-                <h3 class="page-title"> Data Santri </h3>
+                <h3 class="page-title"> Nilai Ummi </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Forms</a></li>
@@ -77,42 +77,59 @@
             <div class="card">
                 <div class="card-body">
                     <table class="table">
+
+
                         <tr>
                             <th>matapelajaran</th>
                             <th>semester</th>
                             <th>tahun</th>
                             <th>Nilai</th>
                         </tr>
-                        <tr>
-                            <td>fiqih</td>
-                            <td>Genap</td>
-                            <td>2022</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>fiqih</td>
-                            <td>Genap</td>
-                            <td>2022</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>fiqih</td>
-                            <td>Genap</td>
-                            <td>2022</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>fiqih</td>
-                            <td>Genap</td>
-                            <td>2022</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>fiqih</td>
-                            <td>Genap</td>
-                            <td>2022</td>
-                            <td>90</td>
-                        </tr>
+                        <?php foreach ($nilaiUmmi as $showNilai) { ?>
+                            <tr>
+                                <td><?= $showNilai['ummi'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_ummi'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?= $showNilai['doa1'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_doa1'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?= $showNilai['doa2'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_doa2'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?= $showNilai['doa3'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_doa3'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?= $showNilai['surat1'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_surat1'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?= $showNilai['surat2'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_surat2'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?= $showNilai['surat3'] ?></td>
+                                <td><?= $showNilai['semester'] ?></td>
+                                <td><?= $showNilai['tahun'] ?></td>
+                                <td><?= $showNilai['nilai_surat3'] ?></td>
+                            </tr>
+
+                        <?php } ?>
                     </table>
 
                 </div>

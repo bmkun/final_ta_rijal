@@ -1,0 +1,4 @@
+1.query seluruh id_santri pada tabel nilai_diniah tahun sekarang dan semester sekarang dan kelas sekarang
+2.query nilai santri tahun sekarang dan semester sekarang dan kelas sekarang berdasarkan id_santri sebelumnya
+
+gabungkan nilai santri dan id_santri dengan array_merge php 

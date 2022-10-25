@@ -41,6 +41,8 @@ class M_guru extends CI_Model
     // guru ngajar di kelas apa saja 
     function kelas_guru($kd_kelas)
     {
+
+
         $user = $this->ion_auth->user()->row();
         $user_id =  $user->id;
         $get_id_guru = $this->db->query(
@@ -49,14 +51,28 @@ class M_guru extends CI_Model
         // mendapatkan id guru
         $id_guru =  $get_id_guru['id_guru'];
         // menampilkan kelas guru 
+
+        if ($kd_kelas == 'ummi') {
         $kelas_guru = $this->db->query(
             "
-            SELECT * FROM kelas_guru INNER JOIN kelas ON kelas_guru.`id_kelas`=kelas.`id_kelas` 
-            WHERE id_guru = $id_guru AND kd_kelas='$kd_kelas'
+            SELECT kelas.id_kelas FROM kelas_guru INNER JOIN kelas ON kelas_guru.`id_kelas`=kelas.`id_kelas` 
+            WHERE id_guru = $id_guru AND kd_kelas='$kd_kelas' order by kelas.id_kelas
             "
-        )->result_array();
+        )->row_array();
+        
+            // $kelas_guru =$kelas_guru[0]  
+            return $kelas_guru['id_kelas'];
+        } else if ($kd_kelas == "diniah") {
+            $kelas_guru = $this->db->query(
+                "
+                SELECT kelas.id_kelas FROM kelas_guru INNER JOIN kelas ON kelas_guru.`id_kelas`=kelas.`id_kelas` 
+                WHERE id_guru = $id_guru AND kd_kelas='$kd_kelas' order by kelas.id_kelas
+                "
+            )->result_array();
+            return [$kelas_guru[0],$kelas_guru[1]];
 
-        return $kelas_guru;
+            // print_r($kelas_guru);
+        }
     }
     // menampilkan kelas guru dan santri
     function kelas($id_guru, $id_kelas)
@@ -96,7 +112,7 @@ class M_guru extends CI_Model
     }
 
     // menampilkan semester berapa sekarang
-    function semester()
+    public function semester()
     {
         $tanggal = date('m');
         if ($tanggal <= 6) {
@@ -108,6 +124,7 @@ class M_guru extends CI_Model
 
     function nilai_santri($id_guru, $semester, $id_kelas)
     {
+        $semester = $this->semester();
         $tahun = date("Y");
         $nilai_santri = $this->db->query("
         SELECT * FROM nilai_diniah INNER JOIN santri ON nilai_diniah.`id_santri` = santri.`id_santri`
@@ -123,5 +140,119 @@ INNER JOIN detail_mapel ON nilai_diniah.`id_detail_mapel` = detail_mapel.`kd_det
         SELECT * FROM kelas WHERE id_kelas =$kelas1 OR id_kelas = $kelas2;
         ")->result_array();
         return [$kelas[0]['Kelas'], $kelas[1]['Kelas']];
+    }
+
+    function inputNilaiDiniah()
+    {
+
+
+
+        $tahun = date("Y");
+        $semester = M_guru::semester();
+
+
+
+        // $inpValidation = $this->db->query("
+        // select count(id_santri) from nilai_diniah where id_santri =$idSantri and id_guru =$idGuru and semester = '$semester' and tgl_inp_nilai= '$tahun'
+        // ");
+
+
+        // if ($inpValidation == 0) {
+        //     $this->db->insert('nilai_diniah', $data);
+
+        //     $this->session->set_flashdata('notiv', "
+        //     <div class='alert alert-success' role='alert'>
+        //     Data berhasil di inputkan :)
+        //   </div>
+        //     ");
+        //     redirect("guru_access/nilai_diniah");
+        // } else {
+        //     $this->session->set_flashdata('notiv', "
+        //     <div class='alert alert-danger' role='alert'>
+        //     Nilai Sudah Ada !!!
+        //   </div>
+        //     ");
+        //     redirect("guru_access/nilai_diniah");
+        // }
+
+    }
+
+    function testNilai()
+    {
+        $tahun = date("Y");
+        $semester = M_guru::semester();
+
+        // return $tahun;
+
+        //         $dataSantri = $this->db->query(
+        //             "
+        //             select distinct Nama,Kelas from nilai_diniah 
+        // inner join santri
+        // on nilai_diniah.id_santri = santri.id_santri 
+        // inner join kelas 
+        // on nilai_diniah.id_kelas_diniah = kelas.id_kelas  
+        //             "
+        //         );
+
+        $nilai = $this->db->query(
+            "
+            select * from nilai_diniah where id_santri =31 and semester = '$semester' and tgl_inp_nilai= '$tahun';
+            "
+        )->result_array();
+
+        return $nilai;
+
+
+        //     $arrayIdSantri = $this->db->query(
+        //         "
+        //         select id_santri from nilai_diniah where tgl_inp_nilai = '$tahun' and semester  ;
+        //         "
+        //     )->result_array();
+
+        //     // return $arrayIdSantri;
+
+        //     foreach ($arrayIdSantri as $idLoop) {
+
+        //         $nilai_santri = $this->db->query("
+        //         SELECT * FROM nilai_diniah INNER JOIN santri ON nilai_diniah.`id_santri` = santri.`id_santri`
+        // INNER JOIN detail_mapel ON nilai_diniah.`id_detail_mapel` = detail_mapel.`kd_detail_mapel`
+        // where id_santri = $idLoop
+        // ")->result_array();
+        //     }
+        //     return $nilai_santri;
+    }
+
+    function santriUmmi($kdUmmi)
+    {
+        $santriUmmi = $this->db->query("
+        select * from kelas_santri_ummi ksu inner join santri s 
+        on ksu.id_santri = s.id_santri 
+        ")->result_array();
+
+        return $santriUmmi;
+    }
+
+
+    function gradeNilaiDiniah($nilai)
+    {
+        if ($nilai >= 96 or $nilai == 100) {
+            return "A+";
+        } else if ($nilai >= 91 or $nilai >= 95) {
+            return "A";
+        } else if ($nilai >= 86 or $nilai >= 90) {
+            return "A-";
+        } else if ($nilai >= 81 or $nilai >= 85) {
+            return "B+";
+        } else if ($nilai >= 76 or $nilai >= 80) {
+            return "B";
+        } else if ($nilai >= 71 or $nilai >= 75) {
+            return "B-";
+        } else if ($nilai >= 66 or $nilai >= 70) {
+            return "C+";
+        } else if ($nilai >= 60 or $nilai >= 65) {
+            return "C";
+        } else if ($nilai < 60) {
+            return "D";
+        }
     }
 }

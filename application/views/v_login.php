@@ -60,7 +60,7 @@
                         <div style="margin-top: 50px;"></div>
                         <h3 class=" mt-3 text-center">Login Affiliate System</h3>
                         <!-- <p class="text-center">Gunakan email and password Anda Untuk mengakses Partner Area.</p> -->
-                        <form class="mt-4" action="<?= site_url('auth/login') ?>" method="post" accept-charset="utf-8">
+                        <form class="mt-4" action="<?= site_url('auth/login') ?>" method="post" accept-charset="utf-8" autocomplete="off">
 
                             <div class="row">
                                 <div class="col-lg-12">
