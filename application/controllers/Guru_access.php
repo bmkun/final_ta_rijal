@@ -61,8 +61,8 @@ class Guru_access extends CI_Controller
         $kelasGuru = $this->m_guru->kelas_guru('ummi');
         $data['kelasGurUmmi'] = $kelasGuru;
         $data['santri_ummi'] = $this->m_guru->santriUmmi($kelasGuru);
+        $data['nilaiUmmi'] =$this->m_guru->nilaiUmmi();
         // print_r($kelasGuru);
-
         $data['sidebar_role'] = "guru";
         $data['tittle'] = "Nilai Ummi";
         $this->load->view("tpq/header", $data);

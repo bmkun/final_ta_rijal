@@ -29,72 +29,72 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Input Nilai Diniah</h4>
-<?php if($kelasGurUmmi == 8 ){ ?>
-                    
+                    <h4 class="card-title">Input Nilai Ummi</h4>
+                    <?php if ($kelasGurUmmi == 8) { ?>
 
-                    <?php } else if($kelasGurUmmi==6){ ?>
+
+                    <?php } else if ($kelasGurUmmi == 6) { ?>
                         <form class="forms-sample" method="POST" action="<?= site_url("guru_access/act_nilai_ummi") ?>">
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Nama Santri</label>
-                            <select class="form-control" name="id_santri">
-                                <?php foreach ($santri_ummi as $row_santri) { ?>
-                                    <option value="<?= $row_santri["id_santri"] ?>"><?= $row_santri["Nama"] ?></option>
-                                <?php } ?>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Nama Santri</label>
+                                <select class="form-control" name="id_santri">
+                                    <?php foreach ($santri_ummi as $row_santri) { ?>
+                                        <option value="<?= $row_santri["id_santri"] ?>"><?= $row_santri["Nama"] ?></option>
+                                    <?php } ?>
 
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Ummi 1</label>
-                            <input type="text" class="form-control" name="nilai_ummi">
-                            <input type="hidden" name="ummi" value="ummi 1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Catatan Ummi</label>
-                            <textarea name="catatan_ummi" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Doa Bercermin</label>
-                            <input type="text" class="form-control" name="nilai_doa1">
-                            <input type="hidden" name="doa1" value="Doa Bercermin">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Doa Memakai Pakaian</label>
-                            <input type="text" class="form-control" name="nilai_doa2">
-                            <input type="hidden" name="doa2" value="Doa Memakai Pakaian">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Doa Melepas Pakaian</label>
-                            <input type="text" class="form-control" name="nilai_doa3">
-                            <input type="hidden" name="doa3" value="Doa Melepas Pakaian">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Catatan Doa</label>
-                            <textarea name="catatan_doa" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Surat Al Hummazah</label>
-                            <input type="text" class="form-control" name="nilai_surat1">
-                            <input type="hidden" name="surat1" value="Surat Al Hummazah">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Surat Al Ashr</label>
-                            <input type="text" class="form-control" name="nilai_surat2">
-                            <input type="hidden" name="surat2" value="Surat Ashr">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Surat At Takasur</label>
-                            <input type="text" class="form-control" name="nilai_surat3">
-                            <input type="hidden" name="surat3" value="Surat At Takasur">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Catatan Surat</label>
-                            <textarea name="catatan_surat" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                        <input type="hidden" value="<?= $kelasGurUmmi ?> " name='id_kelas'>
-                        
-                            <!-- <label for="exampleInputUsername1"><?= $mapel['detail_mapel'] ?></label> 
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Ummi 1</label>
+                                <input type="text" class="form-control" name="nilai_ummi">
+                                <input type="hidden" name="ummi" value="ummi 1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Catatan Ummi</label>
+                                <textarea name="catatan_ummi" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Doa Bercermin</label>
+                                <input type="text" class="form-control" name="nilai_doa1">
+                                <input type="hidden" name="doa1" value="Doa Bercermin">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Doa Memakai Pakaian</label>
+                                <input type="text" class="form-control" name="nilai_doa2">
+                                <input type="hidden" name="doa2" value="Doa Memakai Pakaian">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Doa Melepas Pakaian</label>
+                                <input type="text" class="form-control" name="nilai_doa3">
+                                <input type="hidden" name="doa3" value="Doa Melepas Pakaian">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Catatan Doa</label>
+                                <textarea name="catatan_doa" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Surat Al Hummazah</label>
+                                <input type="text" class="form-control" name="nilai_surat1">
+                                <input type="hidden" name="surat1" value="Surat Al Hummazah">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Surat Al Ashr</label>
+                                <input type="text" class="form-control" name="nilai_surat2">
+                                <input type="hidden" name="surat2" value="Surat Ashr">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Surat At Takasur</label>
+                                <input type="text" class="form-control" name="nilai_surat3">
+                                <input type="hidden" name="surat3" value="Surat At Takasur">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Catatan Surat</label>
+                                <textarea name="catatan_surat" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="<?= $kelasGurUmmi ?> " name='id_kelas'>
+
+                                <!-- <label for="exampleInputUsername1"><?= $mapel['detail_mapel'] ?></label> 
                          
                          
                             <input type="hidden" value="<?= $tahun ?>" name='tahun'>
@@ -102,12 +102,12 @@
                             <input type="hidden" value="<?= $semester ?>" name='semester'>
                              <input type="hidden" value="<?= $mapel['kd_detail_mapel'] ?>" name='id_detail_mapel'> 
                             <input type="text" class="form-control" name="nilai">  -->
-                        </div>
+                            </div>
 
-                        <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                            <button type="submit" class="btn btn-primary mr-2">Simpan</button>
 
-                    </form>
-                        <?php } ?>
+                        </form>
+                    <?php } ?>
                 </div>
                 <div class="card-body">
 
@@ -123,14 +123,19 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>mata pelajaran</th>
-                                <th>Nilai</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                           
-
+                            <?php 
+                            $order = 1;
+                            foreach($nilaiUmmi as $showNilai){                            ?>
+                            <tr>
+                                <td><?= $order++?></td>
+                                <td><?=$showNilai['Nama']?></td>
+                                <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $showNilai['id_nilai_ummi'] ?>">Edit Nilai</button></td>
+                            </tr>
+                            <?php } ?>
 
 
 

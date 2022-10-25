@@ -129,7 +129,7 @@
                             <td width="300"><?= $raportUmmi['nilaiSantri'][0][$i]['ummi'] ?></td>
                             <td align="center"><?= $raportUmmi['nilaiSantri'][0][$i]['nilai_ummi'] ?></td>
                             <td>
-                            <!-- <?= $raportUmmi['nilaiSantri'][0][$i]['catatan'] ?>  -->
+                            <?= $raportUmmi['nilaiSantri'][0][$i]['catatan_ummi'] ?>
                             </td>
                         </tr>
                         <tr>
@@ -146,7 +146,7 @@
                                 <?= $raportUmmi['nilaiSantri'][0][$i]['nilai_doa3'] ?>
                             </td>
                             <td>
-                            <!-- <?= $raportUmmi['nilaiSantri'][0][$i]['catatan'] ?>  -->
+                            <?= $raportUmmi['nilaiSantri'][0][$i]['catatan_doa'] ?>
                             </td>
                         </tr>
                         <tr>
@@ -162,9 +162,10 @@
                                 <?= $raportUmmi['nilaiSantri'][0][$i]['nilai_surat3'] ?>
                             </td>
                             <td>
-                            <!-- <?= $raportUmmi['nilaiSantri'][0][$i]['catatan'] ?>  -->
+                            <?= $raportUmmi['nilaiSantri'][0][$i]['catatan_surat'] ?>
                             </td>
                         </tr>
+                        
                         
                     
                   

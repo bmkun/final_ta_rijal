@@ -232,6 +232,16 @@ INNER JOIN detail_mapel ON nilai_diniah.`id_detail_mapel` = detail_mapel.`kd_det
         return $santriUmmi;
     }
 
+    function nilaiUmmi(){
+        $semester = $this->semester();
+        $tahun = date("Y");
+        $nilaiUmmi = $this->db->query("
+        SELECT * FROM nilai_ummi INNER JOIN santri ON nilai_ummi.`id_santri`=santri.`id_santri`
+        where tahun=$tahun and semester = '$semester' order by santri.Nama
+        ")->result_array();
+
+        return $nilaiUmmi;
+    }
 
     function gradeNilaiDiniah($nilai)
     {
